@@ -1,17 +1,11 @@
 # export
 export
-
 # Pycharm
 .idea
-
-#
 *.*~
-
-#
 *.pyc
-
 #
-*.log
+python2.7.exe.stackdump
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -29,7 +29,6 @@ from logging.handlers import RotatingFileHandler
 # TODO: doc -> generer la doc par sphinx (ou doxygen)
 # TODO: exceptions -> relever plus d'exceptions et les gerer
 # TODO: exceptions -> creer des exceptions customs pour ce projet/script
-# TODO: tests -> mettre en place des tests unitaires (indépendants) Unittests
 
 
 # création de l'objet logger qui va nous servir à écrire dans les logs
@@ -195,8 +194,6 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
     :return:
 
     """
-    # TODO: Ecrire un test unitaire [unittest]
-
     # Create another polylineZ shapefile writer
     w = shapefile.Writer(shapeType=13)
     # Create a field called "Name"
@@ -237,8 +234,6 @@ def write_OPK_to_shp_file(arr_oris, export_filename, b_export_view_dir=False, vi
     :param viewdir_length_proj:
     :return:
     """
-    # TODO: Ecrire un test unitaire [unittest]
-
     #
     w = shapefile.Writer(shapefile.POINT)
     #
