@@ -7,7 +7,11 @@ import numpy as np
 from math import *
 
 # for doctest
-import StringIO
+# url: http://python-future.org/compatible_idioms.html
+try:
+    import StringIO
+except ImportError:
+    from io import StringIO    # for handling unicode strings
 import numpy
 
 # from transformations import transformations
@@ -313,12 +317,12 @@ def print_args(args):
     :param args:
     :return:
     """
-    print "- filename ExportOri: ", args.ori
-    print "- prefix for export: ", args.prefix_for_export
-    print "- pivot: ", args.pivot
-    print "- shapefile: ", args.shapefile
-    print "- export view dir: ", args.viewdir
-    print "- export view dir - length proj: ", args.viewdir_length_proj
+    print("- filename ExportOri: ", args.ori)
+    print("- prefix for export: ", args.prefix_for_export)
+    print("- pivot: ", args.pivot)
+    print("- shapefile: ", args.shapefile)
+    print("- export view dir: ", args.viewdir)
+    print("- export view dir - length proj: ", args.viewdir_length_proj)
 
 
 def init_log():
