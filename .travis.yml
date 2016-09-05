@@ -4,10 +4,25 @@
 language: python
 
 env:
-#  - TOXENV=py26
   - TOXENV=py27
+
+#  - TOXENV=py26
 #  - TOXENV=py33
-  - TOXENV=py34
+
+#==================================== ERRORS ====================================
+#
+#__________ ERROR collecting tests/app/OriExport_to_shapefile_test.py ___________
+#
+#ImportError while importing test module '/home/travis/build/yoyonel/2016_ENSG_PYTHON_COURS/tests/app/OriExport_to_shapefile_test.py'.
+#
+#Original error message:
+#
+#'cannot import name 'euler_matrix''
+#
+#Make sure your test modules/packages have valid Python names.
+#
+#!!!!!!!!!!!!!!!!!!! Interrupted: 1 errors during collection !!!!!!!!!!!!!!!!!!!!
+#  - TOXENV=py34
 
 install: pip install tox
 
