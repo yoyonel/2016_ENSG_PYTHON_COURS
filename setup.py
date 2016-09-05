@@ -87,10 +87,10 @@ setup(
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
-    # $ pip install -e .[dev,test]
+    # $ pip install -e .[dev,tests]
     extras_require={
         'dev': ['check-manifest'],
-        'test': ['coverage'],
+        'tests': ['coverage'],
     },
 
     # If there are data files included in your packages that need to be
@@ -98,6 +98,7 @@ setup(
     # have to be included in MANIFEST.in as well.
     package_data={
         'export': [''],
+        'data': ['OriExport_Ori-RTL-Init.txt'],
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
