@@ -25,7 +25,10 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # urls:
         # - http://stackoverflow.com/questions/273192/how-to-check-if-a-directory-exists-and-create-it-if-necessary
         # - https://docs.python.org/3/library/shutil.html#shutil.rmtree
-        rmtree(prefix_for_export)
+        try:
+            rmtree(prefix_for_export)
+        except:
+            pass
         mkdir(prefix_for_export)
 
     def test_write_OPK_to_shp_file(self):
