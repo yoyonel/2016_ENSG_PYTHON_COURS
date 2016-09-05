@@ -2,6 +2,7 @@
 __author__ = 'YoYo'
 
 import unittest
+from transformations import euler_matrix
 from app.OriExport_to_shapefile import write_viewdir_shp_from_arr_ori
 from app.OriExport_to_shapefile import write_OPK_to_shp_file
 from app.OriExport_to_shapefile import extract_center_dict_ori
