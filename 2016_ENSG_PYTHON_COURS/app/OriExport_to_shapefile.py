@@ -172,7 +172,11 @@ def extract_and_convert_heading_roll_pitch_from_dict_ori(dict_ori):
 
     >>> dict_ori = {'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, \
                     'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
-    >>> print(map(lambda x: round(x, 6), extract_and_convert_heading_roll_pitch_from_dict_ori(dict_ori)))
+    >>> class prettyfloat(float):
+    ...     def __repr__(self):
+    ...         return "%0.6f" % self
+    >>> round_list_float = map(prettyfloat, extract_and_convert_heading_roll_pitch_from_dict_ori(dict_ori))
+    >>> print round_list_float
     [-1.319862, -0.709561, -3.008085]
     """
     # extract
@@ -194,8 +198,12 @@ def extract_center_dict_ori(dict_ori):
     >>> dict_ori = {'id': 'IMG_1468832894.185000000.jpg', \
                     'altitude': 53.534337, 'easting': 657739.197431, 'northing': 6860690.284637, \
                     'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833}
-    >>> print(map(lambda x: round(x, 6), extract_center_dict_ori(dict_ori)))
-    [657739.197431, 6860690.284637, 53.534337, 1.0]
+    >>> class prettyfloat(float):
+    ...     def __repr__(self):
+    ...         return "%0.6f" % self
+    >>> round_list_float = map(prettyfloat, extract_center_dict_ori(dict_ori))
+    >>> print round_list_float
+    [657739.197431, 6860690.284637, 53.534337, 1.000000]
     """
     return [dict_ori["easting"], dict_ori["northing"], dict_ori["altitude"], 1]
 
