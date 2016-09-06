@@ -24,8 +24,8 @@ def main(args):
 def run_static_analysis():
     analyze_rst_files()
     analyze_setup_py()
-    analyze_source_with_flake8()
-    analyze_source_with_pylint()
+    # analyze_source_with_flake8()
+    # analyze_source_with_pylint()
 
 
 def run_unit_tests():
