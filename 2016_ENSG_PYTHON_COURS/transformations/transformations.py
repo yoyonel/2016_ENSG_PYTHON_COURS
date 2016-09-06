@@ -1320,7 +1320,7 @@ def random_quaternion(rand=None):
     True
     >>> q = random_quaternion(numpy.random.random(3))
     >>> q.shape
-    (4L,)
+    (4,)
 
     """
     if rand is None:

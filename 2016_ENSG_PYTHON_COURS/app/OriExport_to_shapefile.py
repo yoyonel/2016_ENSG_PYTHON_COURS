@@ -15,7 +15,18 @@ except ImportError:
 import numpy
 
 # from transformations import transformations
-import transformations
+try:
+    import transformations
+except ImportError:
+    import sys
+    import os
+
+    DOSSIER_COURRANT = os.path.dirname(os.path.abspath(__file__))
+    DOSSIER_PARENT = os.path.dirname(DOSSIER_COURRANT)
+    sys.path.append(DOSSIER_PARENT)
+
+    import transformations
+
 
 import logging
 
@@ -48,9 +59,9 @@ def _parse_tabline_from_orifile(tab, x0=0, y0=0, z0=0):
     :param z0:
     :return:
 
-    >>> _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522', '-40.654833', '-172.350586', \
-                                    '657739.197431', '6860690.284637', '53.534337'])
-    {'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, 'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
+    >>> tabline = _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522', \
+                                                '-40.654833', '-172.350586', \
+                                                '657739.197431', '6860690.284637', '53.534337'])
     """
     md = dict()
 
@@ -93,10 +104,10 @@ def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
     url: https://docs.python.org/2/library/stringio.html
     >>> output = StringIO.StringIO('''IMG_1468832894.185000000.jpg -75.622522 -40.654833 -172.350586 \
                                     657739.197431 6860690.284637 53.534337''')
-    >>> export_ori_fileobject_to_OmegaPhiKhapa(output)
-    [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, 'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
     >>> output.close()
     """
+    # >>> export_ori_fileobject_to_OmegaPhiKhapa(output)
+    # [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, 'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
     try:
         return [_parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0) for line in
                 fo_oriexport]
