@@ -170,6 +170,10 @@ def extract_and_convert_heading_roll_pitch_from_dict_ori(dict_ori):
     :param dict_ori:
     :return:
 
+    urls:
+    - http://stackoverflow.com/questions/2428618/how-to-test-floats-results-with-doctest
+    - http://stackoverflow.com/questions/13510698/python-how-can-i-define-a-class-in-a-doctest
+    - http://stackoverflow.com/questions/1566936/easy-pretty-printing-of-floats-in-python
     >>> dict_ori = {'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, \
                     'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
     >>> class prettyfloat(float):
