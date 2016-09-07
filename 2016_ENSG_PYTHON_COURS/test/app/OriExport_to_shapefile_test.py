@@ -48,25 +48,25 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         arr_oris = [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431,
                      'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
 
-        # on export le shapefile à partir des données pour le tests
+        # on export le shapefile a partir des donnees pour le tests
         write_OPK_to_shp_file(arr_oris,
                               self.test_shapefile,
                               b_export_view_dir=False)
-        # on tests si la methode a exporté les fichiers
+        # on tests si la methode a exporte les fichiers
         # url: http://stackoverflow.com/questions/82831/how-to-check-whether-a-file-exists-using-python
         self.assertTrue(exists(self.test_shapefile))
 
         # lecture d'un shapefile
         r = shapefile.Reader(self.test_shapefile)
-        # géométries
+        # geometries
         shapes = r.shapes()
-        # 1 point défini dans le shapefile
+        # 1 point defini dans le shapefile
         self.assertEqual(len(shapes), 1)
-        # on tests le type de la shape stockée
+        # on tests le type de la shape stockee
         # url: http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf
         # type == 1 => Shape type=Point
         self.assertEqual(shapes[0].shapeType, 1)
-        # on utilise extract_center_dict_ori (qui est doctestée)
+        # on utilise extract_center_dict_ori (qui est doctestee)
         self.assertTrue(np.isclose(shapes[0].points[0], extract_center_dict_ori(arr_oris[0])[:2]).all())
 
     def _raise_assert_on_np_is_close_all(self, np0, np1):
@@ -102,18 +102,18 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
                                        self.test_shapefile,
                                        viewdir_length_proj=10.0)
 
-        # on tests si la methode a exporté les fichiers
+        # on tests si la methode a exporte les fichiers
         self.assertTrue(exists(self.test_shapefile))
 
         # lecture d'un shapefile
         r = shapefile.Reader(self.test_shapefile)
-        # géométries
+        # geometries
         shapes = r.shapes()
         # extraction de la listes des points
         list_points = shapes[0].points
-        # 1 point défini dans le shapefile
+        # 1 point defini dans le shapefile
         self.assertEqual(len(shapes), 1)
-        # on tests le type de la shape stockée
+        # on tests le type de la shape stockee
         # 13 PolyLineZ
         self.assertEqual(shapes[0].shapeType, 13)
 
