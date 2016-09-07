@@ -15,14 +15,6 @@ except ImportError:
 
 import numpy
 
-# from transformations import transformations
-# import sys
-# import os
-# PACKAGE_PARENT = '..'
-# SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
-# sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
-# print("sys.path: ", sys.path, file=sys.stderr)
-# import transformations
 try:
     # from transformations import euler_matrix
     import transformations
@@ -65,9 +57,16 @@ def _parse_tabline_from_orifile(tab, x0=0, y0=0, z0=0):
     :param z0:
     :return:
 
-    >>> tabline = _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522', \
-                                                '-40.654833', '-172.350586', \
-                                                '657739.197431', '6860690.284637', '53.534337'])
+    urls:
+    - http://stackoverflow.com/questions/4527942/comparing-two-dictionaries-in-python
+    - https://docs.python.org/3.0/whatsnew/3.0.html (Ordering Comparisons¶)
+    >>> dict_computed = _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522',
+    ...                                             '-40.654833', '-172.350586',
+    ...                                             '657739.197431', '6860690.284637', '53.534337'])
+    >>> dict_expected = {'heading': -75.622522, 'pitch': -172.350586, 'roll': -40.654833, 'northing': 6860690.284637,
+    ...         'easting': 657739.197431, 'id': 'IMG_1468832894.185000000.jpg', 'altitude': 53.534337}
+    >>> dict_computed.__eq__(dict_expected)
+    True
     """
     md = dict()
 
