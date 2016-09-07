@@ -34,7 +34,7 @@ def run_unit_tests():
          '--verbose',
          '--with-doctest',
          '--doctest-options', '+NORMALIZE_WHITESPACE',
-         '--with-coverage',
+         '--with-coverage',     # bilan des tests
          '--cover-tests',
          '--cover-inclusive',
          '--cover-package', PACKAGE_DIR,

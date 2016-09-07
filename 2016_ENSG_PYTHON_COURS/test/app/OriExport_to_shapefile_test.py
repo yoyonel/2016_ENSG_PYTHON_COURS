@@ -106,6 +106,7 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # print("shapes[0].points[1]:  ", shapes[0].points[1])
 
         # TODO: tester chacune des orientations (pitch, heading, roll)
+        # self.assertFalse(True)
 
 
 if __name__ == '__main__':
