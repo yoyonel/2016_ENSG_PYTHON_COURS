@@ -1,3 +1,6 @@
+"""
+Summary
+"""
 # coding=utf-8
 __author__ = 'YoYo'
 
@@ -13,6 +16,12 @@ import numpy as np
 
 
 class Test_OriExport_to_shapefile(unittest.TestCase):
+    """Summary
+
+    Attributes:
+        test_shapefile (TYPE): Description
+    """
+
     def setUp(self):
         """
 
@@ -60,6 +69,18 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # on utilise extract_center_dict_ori (qui est doctestée)
         self.assertTrue(np.isclose(shapes[0].points[0], extract_center_dict_ori(arr_oris[0])[:2]).all())
 
+    def _raise_assert_on_np_is_close_all(self, np0, np1):
+        """Summary
+
+        Args:
+            np0 (TYPE): Description
+            np1 (TYPE): Description
+
+        Returns:
+            TYPE: Description
+        """
+        return self.assertTrue(np.isclose(np0, np1).all())
+
     def test_write_viewdir_shp_from_arr_ori(self):
         """
 
@@ -88,6 +109,8 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         r = shapefile.Reader(self.test_shapefile)
         # géométries
         shapes = r.shapes()
+        # extraction de la listes des points
+        list_points = shapes[0].points
         # 1 point défini dans le shapefile
         self.assertEqual(len(shapes), 1)
         # on tests le type de la shape stockée
@@ -97,10 +120,10 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # On tests les points contenus dans le shapefile
         # point 1: centre de l'ori
         point1_expected = extract_center_dict_ori(arr_oris[0])[:2]
-        self.assertTrue(np.isclose(shapes[0].points[0], point1_expected).all())
+        self._raise_assert_on_np_is_close_all(list_points[0], point1_expected)
         # point 2: centre de l'ori + projection (longueur=10) dans la direction de vue
         point2_expected = np.add(extract_center_dict_ori(arr_oris[0])[:2], [10.0, 0.0])
-        self.assertTrue(np.isclose(shapes[0].points[1], point2_expected).all())
+        self._raise_assert_on_np_is_close_all(list_points[1], point2_expected)
         #
         # print("shapes[0].points[0]:  ", shapes[0].points[0])
         # print("shapes[0].points[1]:  ", shapes[0].points[1])
