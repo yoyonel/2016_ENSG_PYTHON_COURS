@@ -31,6 +31,7 @@ def run_static_analysis():
 def run_unit_tests():
     run(('nosetests',
          '--exe',
+         '--verbose',
          '--with-doctest',
          '--doctest-options', '+NORMALIZE_WHITESPACE',
          '--with-coverage',

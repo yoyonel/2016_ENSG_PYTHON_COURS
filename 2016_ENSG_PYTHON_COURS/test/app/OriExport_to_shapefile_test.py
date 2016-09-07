@@ -37,7 +37,7 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         :return:
         """
         arr_oris = [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431,
-                          'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
+                     'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
 
         # on export le shapefile à partir des données pour le tests
         write_OPK_to_shp_file(arr_oris,
