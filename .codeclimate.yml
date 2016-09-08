@@ -1,0 +1,31 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      # - ruby
+      # - javascript
+      - python
+      # - php
+  fixme:
+    enabled: true
+  radon:
+    enabled: true
+ratings:
+  paths:
+  # - 2016_ENSG_PYTHON_COURS/app/**
+  # - 2016_ENSG_PYTHON_COURS/test/**
+  # - "**.inc"
+  # - "**.js"
+  # - "**.jsx"
+  # - "**.module"
+  # - "**.php"
+  - "**.py"
+  # - "**.rb"
+exclude_paths:
+# - test/
+- 2016_ENSG_PYTHON_COURS/transformations/**
+- python-pypi-template/**
+- .pylintrc
+- README.rst

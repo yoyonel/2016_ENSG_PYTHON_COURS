@@ -1,3 +1,6 @@
+"""
+Summary
+"""
 # coding=utf-8
 __author__ = 'YoYo'
 
@@ -25,43 +28,73 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # urls:
         # - http://stackoverflow.com/questions/273192/how-to-check-if-a-directory-exists-and-create-it-if-necessary
         # - https://docs.python.org/3/library/shutil.html#shutil.rmtree
-        rmtree(prefix_for_export)
+        try:
+            rmtree(prefix_for_export)
+        except OSError:
+            pass
         mkdir(prefix_for_export)
 
     def test_write_OPK_to_shp_file(self):
         """
+        Test
+        ----
 
-        :return:
+        Test la methode 'app.write_OPK_to_shp_file' qui
+
+        ecrit dans un shapefile les positions des centres optiques calculees depuis un array d'ORIs.
         """
         arr_oris = [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431,
-                          'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
+                     'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
 
-        # on export le shapefile à partir des données pour le test
+        # on export le shapefile a partir des donnees pour le tests
         write_OPK_to_shp_file(arr_oris,
                               self.test_shapefile,
                               b_export_view_dir=False)
-        # on test si la methode a exporté les fichiers
+        # on tests si la methode a exporte les fichiers
         # url: http://stackoverflow.com/questions/82831/how-to-check-whether-a-file-exists-using-python
         self.assertTrue(exists(self.test_shapefile))
 
         # lecture d'un shapefile
         r = shapefile.Reader(self.test_shapefile)
-        # géométries
+        # geometries
         shapes = r.shapes()
-        # 1 point défini dans le shapefile
+        # extraction de la listes des points
+        list_points = shapes[0].points
+        # 1 point definit dans le shapefile
         self.assertEqual(len(shapes), 1)
-        # on test le type de la shape stockée
+        # on tests le type de la shape stockee
         # url: http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf
         # type == 1 => Shape type=Point
         self.assertEqual(shapes[0].shapeType, 1)
-        # on utilise extract_center_dict_ori (qui est doctestée)
-        self.assertTrue(np.isclose(shapes[0].points[0], extract_center_dict_ori(arr_oris[0])[:2]).all())
+        # on utilise extract_center_dict_ori (qui est doctestee)
+        self._raise_assert_on_np_is_close_all(list_points[0], extract_center_dict_ori(arr_oris[0])[:2])
+
+    def _raise_assert_on_np_is_close_all(self, np0, np1):
+        """
+        Helper pour les tests
+        ---------------------
+
+        Utilise Numpy pour determiner si deux entites (numpy) sont proches.
+
+        Leve une exception si ce n'est pas le cas.
+
+        :param np0:
+        :param np1:
+        :return:
+        """
+
+        return self.assertTrue(np.isclose(np0, np1).all())
 
     def test_write_viewdir_shp_from_arr_ori(self):
         """
+        Test
+        ----
+        Test la methode 'app.write_viewdir_shp_from_arr_ori' qui
 
-        :return:
+        ecrit dans un shapefile des directions de vues calculees depuis un array d'ORIs.
+
         """
+        # TODO: tester chacune des orientations (pitch, heading, roll)
         # url: http://support.pcigeomatics.com/hc/en-us/articles/203483349-Heading-Pitch-Roll-vs-Omega-Phi-Kappa
         arr_oris = [
             {
@@ -78,31 +111,28 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
                                        self.test_shapefile,
                                        viewdir_length_proj=10.0)
 
-        # on test si la methode a exporté les fichiers
+        # on tests si la methode a exporte les fichiers
         self.assertTrue(exists(self.test_shapefile))
 
         # lecture d'un shapefile
         r = shapefile.Reader(self.test_shapefile)
-        # géométries
+        # geometries
         shapes = r.shapes()
-        # 1 point défini dans le shapefile
+        # extraction de la listes des points
+        list_points = shapes[0].points
+        # 1 point defini dans le shapefile
         self.assertEqual(len(shapes), 1)
-        # on test le type de la shape stockée
+        # on tests le type de la shape stockee
         # 13 PolyLineZ
         self.assertEqual(shapes[0].shapeType, 13)
 
-        # On test les points contenus dans le shapefile
+        # On tests les points contenus dans le shapefile
         # point 1: centre de l'ori
         point1_expected = extract_center_dict_ori(arr_oris[0])[:2]
-        self.assertTrue(np.isclose(shapes[0].points[0], point1_expected).all())
+        self._raise_assert_on_np_is_close_all(list_points[0], point1_expected)
         # point 2: centre de l'ori + projection (longueur=10) dans la direction de vue
         point2_expected = np.add(extract_center_dict_ori(arr_oris[0])[:2], [10.0, 0.0])
-        self.assertTrue(np.isclose(shapes[0].points[1], point2_expected).all())
-        #
-        # print("shapes[0].points[0]:  ", shapes[0].points[0])
-        # print("shapes[0].points[1]:  ", shapes[0].points[1])
-
-        # TODO: tester chacune des orientations (pitch, heading, roll)
+        self._raise_assert_on_np_is_close_all(list_points[1], point2_expected)
 
 
 if __name__ == '__main__':

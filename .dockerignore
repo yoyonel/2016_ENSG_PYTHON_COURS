@@ -1,12 +1,23 @@
-#
-export/
+# Git
+.git
+.gitignore
 
-#
-python-pypi-template/
+# CI
+.codeclimate.yml
+.travis.yml
+
+# Docker
+docker-compose.yml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
 *.py[cod]
+*/*.py[cod]
+*/*/*.py[cod]
+*/*/*/*.py[cod]
 
 # C extensions
 *.so
@@ -45,7 +56,6 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*,cover
 
 # Translations
 *.mo
@@ -70,9 +80,12 @@ venv/
 
 # Python mode for VIM
 .ropeproject
+*/.ropeproject
+*/*/.ropeproject
+*/*/*/.ropeproject
 
 # Vim swap files
 *.swp
-
-# Code Climate
-codeclimate-config.patch
+*/*.swp
+*/*/*.swp
+*/*/*/*.swp
