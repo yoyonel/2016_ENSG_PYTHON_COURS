@@ -35,10 +35,13 @@ def run_unit_tests():
          '--with-doctest',
          '--doctest-options', '+NORMALIZE_WHITESPACE',
          '--with-coverage',     # bilan des tests
+         "--cover-erase",
          '--cover-tests',
          '--cover-inclusive',
          '--cover-package', PACKAGE_DIR,
          PACKAGE_DIR))
+    # # url: https://codeclimate.com/repos/57d00c8a3f49213233001380/coverage_setup
+    # run(('codeclimate-test-reporter'))
 
 
 def analyze_rst_files():

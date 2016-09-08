@@ -72,3 +72,6 @@ venv/
 
 # Vim swap files
 *.swp
+
+# Code Climate
+codeclimate-config.patch

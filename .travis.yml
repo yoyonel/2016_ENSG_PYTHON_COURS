@@ -23,11 +23,12 @@ matrix:
   #   env:
   #   - TOXENV=pypy3
 install:
-- pip install tox coveralls
+- pip install tox coveralls codeclimate-test-reporter
 script:
 - tox
 after_success:
 - coveralls
+- codeclimate-test-reporter
 deploy:
   provider: pypi
   user: yoyonel
