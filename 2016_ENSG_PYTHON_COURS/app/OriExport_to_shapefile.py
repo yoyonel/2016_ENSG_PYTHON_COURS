@@ -11,7 +11,7 @@ from math import *
 try:
     from StringIO import StringIO
 except ImportError:
-    from io import StringIO    # for handling unicode strings
+    from io import StringIO  # for handling unicode strings
 
 try:
     # from transformations import euler_matrix
@@ -19,6 +19,7 @@ try:
 except ImportError:
     import sys
     import os
+
     PACKAGE_PARENT = '..'
     SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
     sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
@@ -407,6 +408,7 @@ def main(argv):
                 write_OPK_to_shp_file(arr_oris, args.shapefile, args.viewdir, args.viewdir_length_proj)
     except IOError as err:
         logger.error('Exception: %s', err)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
