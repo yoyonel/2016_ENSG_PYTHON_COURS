@@ -13,8 +13,6 @@ try:
 except ImportError:
     from io import StringIO    # for handling unicode strings
 
-import numpy
-
 try:
     # from transformations import euler_matrix
     import transformations
@@ -56,15 +54,15 @@ def _parse_tabline_from_orifile(tab, x0=0, y0=0, z0=0):
     :return:
 
     urls:
-    - http://stackoverflow.com/questions/4527942/comparing-two-dictionaries-in-python
-    - https://docs.python.org/3.0/whatsnew/3.0.html (Ordering Comparisons¶)
-    >>> dict_computed = _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522',
-    ...                                             '-40.654833', '-172.350586',
-    ...                                             '657739.197431', '6860690.284637', '53.534337'])
-    >>> dict_expected = {'heading': -75.622522, 'pitch': -172.350586, 'roll': -40.654833, 'northing': 6860690.284637,
-    ...         'easting': 657739.197431, 'id': 'IMG_1468832894.185000000.jpg', 'altitude': 53.534337}
-    >>> dict_computed.__eq__(dict_expected)
-    True
+        - http://stackoverflow.com/questions/4527942/comparing-two-dictionaries-in-python
+        - https://docs.python.org/3.0/whatsnew/3.0.html (Ordering Comparisons¶)
+        >>> dict_computed = _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522',
+        ...                                             '-40.654833', '-172.350586',
+        ...                                             '657739.197431', '6860690.284637', '53.534337'])
+        >>> dict_expected = {'heading': -75.622522, 'pitch': -172.350586, 'roll': -40.654833, 'northing': 6860690.284637,
+        ...         'easting': 657739.197431, 'id': 'IMG_1468832894.185000000.jpg', 'altitude': 53.534337}
+        >>> dict_computed.__eq__(dict_expected)
+        True
     """
     md = dict()
 
@@ -107,10 +105,14 @@ def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
     url: https://docs.python.org/2/library/stringio.html
     >>> output = StringIO('''IMG_1468832894.185000000.jpg -75.622522 -40.654833 -172.350586 \
                                     657739.197431 6860690.284637 53.534337''')
+    >>> dict_computed = export_ori_fileobject_to_OmegaPhiKhapa(output)
+    >>> dict_expected = [{  'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, \
+                            'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, \
+                            'northing': 6860690.284637}]
+    >>> dict_computed.__eq__(dict_computed)
+    True
     >>> output.close()
     """
-    # >>> export_ori_fileobject_to_OmegaPhiKhapa(output)
-    # [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, 'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
     try:
         return [_parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0) for line in
                 fo_oriexport]
@@ -129,21 +131,21 @@ def build_rotationmatrix_from_euler_micmac(heading, roll, pitch, print_debug=Fal
 
     Usage:
     >>> mat_computed = build_rotationmatrix_from_euler_micmac(pitch=0, heading=0, roll=0)
-    >>> mat_expected = numpy.array( \
+    >>> mat_expected = np.array( \
             [[ 1., 0.,  0.,  0.],  \
             [ 0.,  1.,  0.,  0.],   \
             [-0.,  0.,  1.,  0.],   \
             [ 0.,  0.,  0.,  1.]])
-    >>> numpy.allclose(mat_computed, mat_expected)
+    >>> np.allclose(mat_computed, mat_expected)
     True
 
     >>> mat_computed = build_rotationmatrix_from_euler_micmac(pitch=-172.350586, heading=-75.622522, roll=-40.654833)
-    >>> mat_expected = numpy.array( \
+    >>> mat_expected = np.array( \
             [[ 0.90781218, -0.18017385, -0.37870098,  0.        ],  \
             [-0.07492065, -0.95815745,  0.27626291,  0.        ],   \
             [-0.41263052, -0.22242231, -0.88332575,  0.        ],   \
             [ 0.        ,  0.        ,  0.        ,  1.        ]])
-    >>> numpy.allclose(mat_computed, mat_expected)
+    >>> np.allclose(mat_computed, mat_expected)
     True
     """
     # urls:
@@ -218,6 +220,7 @@ def extract_center_dict_ori(dict_ori):
 
 def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_proj=1.0):
     """
+    Ecrit dans un shapefile les directions de vue calculees a partir d'un array d'oris.
 
     :param arr_oris:
     :param export_filename:
@@ -230,6 +233,7 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
     # Create a field called "Name"
     w.field("NAME")
 
+    # constante: l'axe z
     zaxis = [0, 0, 1, 0]
 
     # This time write each line separately
@@ -241,7 +245,7 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
         heading, roll, pitch = extract_and_convert_heading_roll_pitch_from_dict_ori(ori)
         # on calcule la matrix de rotation a partir de ces informations d'orientation
         matrix_rot = build_rotationmatrix_from_euler_micmac(heading, roll, pitch)
-        # url: http://docs.scipy.org/doc/numpy/reference/generated/numpy.multiply.html
+        # url: http://docs.scipy.org/doc/numpy/reference/generated/np.multiply.html
         view_vec = np.multiply(zaxis, viewdir_length_proj)
         # on calcule le vecteur de vue
         rot_view_vec = np.dot(matrix_rot, view_vec)
@@ -257,13 +261,18 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
 
 
 def write_OPK_to_shp_file(arr_oris, export_filename, b_export_view_dir=False, viewdir_length_proj=1.0):
-    """
+    """Summary
 
-    :param arr_oris:
-    :param export_filename:
-    :param b_export_view_dir:
-    :param viewdir_length_proj:
-    :return:
+        Ecrit dans un shapefile les positions des centres optiques calculees depuis un array d'ORIs.
+
+    Args:
+        arr_oris (TYPE): Description
+        export_filename (TYPE): Description
+        b_export_view_dir (bool, optional): Description
+        viewdir_length_proj (float, optional): Description
+
+    Returns:
+        TYPE: Description
     """
     #
     w = shapefile.Writer(shapefile.POINT)
@@ -282,11 +291,11 @@ def write_OPK_to_shp_file(arr_oris, export_filename, b_export_view_dir=False, vi
         write_viewdir_shp_from_arr_ori(arr_oris, export_filename + "_view_dir", viewdir_length_proj)
 
 
-def parse_arguments(_):
-    """
+def parse_arguments(argv):
+    """Summary
 
-    :param _:
-    :return:
+    Returns:
+        TYPE: Description
     """
     parser = argparse.ArgumentParser()
 
