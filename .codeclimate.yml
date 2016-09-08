@@ -4,22 +4,28 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-      - javascript
+      # - ruby
+      # - javascript
       - python
-      - php
+      # - php
   fixme:
     enabled: true
   radon:
     enabled: true
 ratings:
   paths:
-  - "**.inc"
-  - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
+  # - 2016_ENSG_PYTHON_COURS/app/**
+  # - 2016_ENSG_PYTHON_COURS/test/**
+  # - "**.inc"
+  # - "**.js"
+  # - "**.jsx"
+  # - "**.module"
+  # - "**.php"
   - "**.py"
-  - "**.rb"
+  # - "**.rb"
 exclude_paths:
-- test/
+# - test/
+- 2016_ENSG_PYTHON_COURS/transformations/**
+- python-pypi-template/**
+- .pylintrc
+- README.rst

@@ -35,7 +35,7 @@ Changelog
 - Initial release.
 
 
-.. |Build| image:: https://travis-ci.org/yoyonel/2016_ENSG_PYTHON_COURS.svg?branch=master
+.. |Build| image:: https://travis-ci.org/yoyonel/2016_ENSG_PYTHON_COURS.svg?branch=dev-python-pypi
    :target: https://travis-ci.org/yoyonel/2016_ENSG_PYTHON_COURS
 .. |Coverage| image:: https://img.shields.io/coveralls/yoyonel/2016_ENSG_PYTHON_COURS.svg
    :target: https://coveralls.io/r/yoyonel/2016_ENSG_PYTHON_COURS

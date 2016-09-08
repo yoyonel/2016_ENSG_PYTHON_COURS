@@ -36,8 +36,6 @@ from logging.handlers import RotatingFileHandler
 # - http://gis.stackexchange.com/questions/85448/python-how-to-create-a-polygon-shapefile-from-a-list-of-x-y-coordinates
 
 
-# TODO: Versionner le projet [URGENT]
-#
 # TODO: doc -> ecrire la doc. (reellement) pour les methodes/fonctions
 # TODO: doc -> generer la doc par sphinx (ou doxygen)
 # TODO: exceptions -> relever plus d'exceptions et les gerer
