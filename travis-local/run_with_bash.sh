@@ -7,4 +7,4 @@ docker	run -it --rm \
 		-v /d/__DATAS__/__DEV__/OSGEO4W/__COURS__/.tox/py33:/home/travis/2016_ENSG_PYTHON_COURS/.tox/py33 \
 		-v /d/__DATAS__/__DEV__/OSGEO4W/__COURS__/.tox/py34:/home/travis/2016_ENSG_PYTHON_COURS/.tox/py34 \
 		travislocal/ensg \
-		/home/travis/.local/bin/tox
+		/bin/bash
