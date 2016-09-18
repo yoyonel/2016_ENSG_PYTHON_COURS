@@ -1,0 +1,16 @@
+SET OSGEO4W_ROOT=D:\__DATAS__\__DEV__\OSGEO4W\OSGeo4W64
+SET USER_ROOT=C:/Users/Abdias
+
+SET QGISNAME=qgis
+SET QGIS=%OSGEO4W_ROOT%\apps\%QGISNAME%
+SET QGIS_PREFIX_PATH=%QGIS%
+SET PYCHARM="D:\__INSTALL__\Program Files (x86)\JetBrains\PyCharm Community Edition 2016.2.3\bin\pycharm.exe"
+CALL %OSGEO4W_ROOT%\bin\o4w_env.bat
+
+SET PATH=%PATH%;%QGIS%\bin
+SET PYTHONPATH=%QGIS%\python;%PYTHONPATH%
+
+SET QGIS_USER_PLUGINS_PATH=%USER_ROOT%\.qgis2\python\plugins
+set PYTHONPATH=%QGIS_USER_PLUGINS_PATH%;%PYTHONPATH%
+
+start "PyCharm aware of QGIS" /B %PYCHARM% %*

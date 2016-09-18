@@ -7,11 +7,26 @@ import numpy as np
 from math import *
 
 # for doctest
-import StringIO
 import numpy
 
-# from transformations import transformations
-import transformations
+# for doctest
+# url: http://python-future.org/compatible_idioms.html
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO  # for handling unicode strings
+
+try:
+    # from transformations import euler_matrix
+    import transformations
+except ImportError:
+    import sys
+    import os
+
+    PACKAGE_PARENT = '..'
+    SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+    sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+    import transformations
 
 import logging
 
@@ -107,6 +122,8 @@ def build_rotationmatrix_from_euler_micmac(heading, roll, pitch, print_debug=Fal
     :param heading:
     :param roll:
     :param pitch:
+    :param print_debug:
+    
     :return:
 
     >>> mat_computed = build_rotationmatrix_from_euler_micmac(pitch=0, heading=0, roll=0)
@@ -280,7 +297,7 @@ def parse_arguments(_):
 
     # option: prefix pour les exports
     #
-    parser.add_argument("--prefix_for_export", nargs=1, type=str,
+    parser.add_argument("--prefix_for_export", type=str,
                         default="export/",
                         help="""prefix pour les exports \
                         (default: %(default)s)""")
@@ -313,12 +330,12 @@ def print_args(args):
     :param args:
     :return:
     """
-    print "- filename ExportOri: ", args.ori
-    print "- prefix for export: ", args.prefix_for_export
-    print "- pivot: ", args.pivot
-    print "- shapefile: ", args.shapefile
-    print "- export view dir: ", args.viewdir
-    print "- export view dir - length proj: ", args.viewdir_length_proj
+    print("- filename ExportOri: ", args.ori)
+    print("- prefix for export: ", args.prefix_for_export)
+    print("- pivot: ", args.pivot)
+    print("- shapefile: ", args.shapefile)
+    print("- export view dir: ", args.viewdir)
+    print("- export view dir - length proj: ", args.viewdir_length_proj)
 
 
 def init_log():
