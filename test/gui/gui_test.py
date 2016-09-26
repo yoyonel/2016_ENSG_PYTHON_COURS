@@ -66,6 +66,7 @@ class Test_GUI(unittest.TestCase):
         """
         # create a new application instance
         self.app = app = QtGui.QApplication(sys.argv)
+        print("sys.argv: %s", sys.argv)
 
         # create a map canvas widget
         self.canvas = canvas = QgsMapCanvas()

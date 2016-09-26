@@ -17,7 +17,6 @@ try:
 except ImportError:
     from io import StringIO  # for handling unicode strings
 
-
 try:
     # from transformations import euler_matrix
     import transformations
@@ -118,7 +117,7 @@ def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
         return []
 
 
-def build_rotationmatrix_from_euler_micmac(heading, roll, pitch, print_debug=False):
+def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
     """
 
     :param heading:
@@ -244,20 +243,29 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
     logger.info("Export file: %s", export_filename)
 
 
-def write_OPK_to_shp_file(arr_oris, export_filename, b_export_view_dir=False, viewdir_length_proj=1.0):
+def write_OPK_to_shp_file(
+        arr_oris,
+        export_filename,
+        b_export_view_dir=False,
+        viewdir_length_proj=1.0,
+        field_0_name="id",
+        field_1_name="position"
+):
     """
 
     :param arr_oris:
     :param export_filename:
     :param b_export_view_dir:
     :param viewdir_length_proj:
+    :param field_0_name: len(field_0_name) < 11
+    :type field_1_name: len(field_1_name) < 11
     :return:
     """
     #
     w = shapefile.Writer(shapefile.POINT)
     #
-    w.field('FIRST_FLD')
-    w.field('SECOND_FLD', 'C', '40')
+    w.field(field_0_name)
+    w.field(field_1_name, 'C', '40')
     #
     for _, ori in enumerate(arr_oris):
         w.point(ori["easting"], ori["northing"], ori["altitude"])
@@ -299,10 +307,10 @@ def parse_arguments(_):
 
     # option: prefix pour les exports
     #
-    parser.add_argument("--prefix_for_export", type=str,
-                        default="export/",
-                        help="""prefix pour les exports \
-                        (default: %(default)s)""")
+    # parser.add_argument("--path_for_export", type=str,
+    #                     default="/export/",
+    #                     help="""path pour les exports \
+    #                     (default: %(default)s)""")
 
     # option: noms des champs pour l'export shapefile
 
@@ -320,8 +328,8 @@ def parse_arguments(_):
     if args.shapefile is None:
         args.shapefile = args.ori[:-4]
 
-    # add the prefix for export filenames
-    args.shapefile = args.prefix_for_export + args.shapefile
+    # # add the prefix for export filenames
+    # args.shapefile = args.path_for_export + args.shapefile
 
     return args
 
@@ -333,7 +341,7 @@ def print_args(args):
     :return:
     """
     print("- filename ExportOri: ", args.ori)
-    print("- prefix for export: ", args.prefix_for_export)
+    # print("- prefix for export: ", args.prefix_for_export)
     print("- pivot: ", args.pivot)
     print("- shapefile: ", args.shapefile)
     print("- export view dir: ", args.viewdir)
@@ -386,6 +394,7 @@ def main(argv):
                 write_OPK_to_shp_file(arr_oris, args.shapefile, args.viewdir, args.viewdir_length_proj)
     except IOError as err:
         logger.error('Exception: %s', err)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
