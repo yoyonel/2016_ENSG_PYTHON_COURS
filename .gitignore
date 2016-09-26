@@ -1,3 +1,7 @@
+#
+codeclimate-config.patch
+python-pypi-template/
+
 # tox
 .tox/
 # export
