@@ -5,6 +5,17 @@ import random
 import sys
 from PyQt4.QtGui import *
 
+import platform
+
+# url: http://stackoverflow.com/questions/110362/how-can-i-find-the-current-os-in-python
+settings = {
+    'Linux-3.13.0-24-generic-x86_64-with-LinuxMint-17.3-rosa': {
+        'search_dir_images': u'/media/atty/WIN7_INST_DATAS/__DATAS__/__DEV__/OSGEO4W/2016-07-18_LI3DS_Nexus5_Synch_BatU/img',
+        'search_pattern_images': u'*.jpg'
+    }
+}
+s = settings[platform.platform()]
+
 # urls:
 # - http://stackoverflow.com/questions/2701173/most-efficient-way-for-a-lookup-search-in-a-huge-list-python
 # - https://docs.python.org/2/library/bisect.html
@@ -63,8 +74,11 @@ def init_label_with_img(id_img, label=None):
     # if os.path.exists(img_filename):
     try:
         label = load_pixmap_to_label(img_filename)
-    except Exception as err:
-        print("Unexpected error:", err)
+    except Exception as e:
+        # url: http://stackoverflow.com/questions/1278705/python-when-i-catch-an-exception-how-do-i-get-the-type-file-and-line-number
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
     #
     return label
 
@@ -144,6 +158,7 @@ def get_random_key(d):
 
 
 def create_label_with_random_img(dict_imgs, label=QLabel()):
+    tup_qgis = (None, None)
     try:
         id_img = get_random_key(dict_imgs)
         dict_img = dict_imgs[id_img]
@@ -151,15 +166,18 @@ def create_label_with_random_img(dict_imgs, label=QLabel()):
         # -----
         # Notes
         # -----
-        # Il faut se rappeler que les informations fournies par QGIS ne sont pas statiques au cours de l'execution du plugin (les liens peuvent etre effaces/supprimes, changes, etc ...)
+        # Il faut se rappeler que les informations fournies par QGIS ne sont pas statiques
+        # au cours de l'execution du plugin (les liens peuvent etre effaces/supprimes, changes, etc ...)
         # Il faudrait retester la validite des informations a chaque
         # utilisation (ou ne plus stocker et effectuer des requetes a la volee)
         # layer_selected, featureid_selected = get_qgis_from_dict_imgs(id_img)
         tup_qgis = layer_selected, featureid_selected = dict_img['qgis']
         #
         label = init_label_with_img(id_img, label)
-    except Exception as err:
-        print("Unexpected error:", err)
+    except Exception as e:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
 
     return label, tup_qgis
 
@@ -176,13 +194,18 @@ def select_feature_on_layer(layer_selected, featureid_selected, selection_qcolor
     # urls:
     # - http://gis.stackexchange.com/questions/131158/how-to-select-features-using-an-expression-with-pyqgis
     # - http://gis.stackexchange.com/questions/136861/how-to-get-a-layer-by-name-in-pyqgis
-    layer_selected.setSelectedFeatures([featureid_selected])
-    print("Feature selected: %d" % (featureid_selected))
+    try:
+        layer_selected.setSelectedFeatures([featureid_selected])
+    except Exception as e:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
+    else:
+        print("Feature selected: %d" % (featureid_selected))
 
 
 def build_imgs_dict(layers_compatibles):
     dict_imgs = {}
-
     # Pour chaque layer compatible
     for layer in layers_compatibles:
         # On recupere ces features
@@ -201,7 +224,7 @@ def build_imgs_dict(layers_compatibles):
                 id_img_in_list = bisect_left(list_img_basename, id_img)
                 # On peut extraire son path
                 dir_path_img = list_img_dirs[id_img_in_list]
-                fullpath_to_img = os.path.join(dir_path_img, id_img)
+                # fullpath_to_img = os.path.join(dir_path_img, id_img)
 
                 # On recupere l'id de la feature [QGIS side]
                 qgis_feature_id = feature.id()
@@ -256,7 +279,11 @@ def search_images(
 #############
 if __name__ == '__main__' or __name__ == '__console__':
     # local settings
-    list_img_dirs, list_img_basename = search_images()
+    list_img_dirs, list_img_basename = search_images(
+        # search_dir_images="/media/atty/WIN7_INST_DATAS/__DATAS__/__DEV__/OSGEO4W/2016-07-18_LI3DS_Nexus5_Synch_BatU/img"
+        search_dir_images=s['search_dir_images'],
+        search_pattern_images=s['search_pattern_images'],
+    )
 
     # On recupere tous les layers QGIS disponibles
     layers = iface.mapCanvas().layers()
@@ -264,6 +291,7 @@ if __name__ == '__main__' or __name__ == '__console__':
     layers_compatibles = get_vector_layers_with_fields_v2a(
         layers, [u'id', u'position'])
 
+    print("layers_compatibles: %s" % (layers_compatibles))
     dict_imgs = build_imgs_dict(layers_compatibles)
 
     layer_selected, feature_selected = show_random_img_in_label(dict_imgs)

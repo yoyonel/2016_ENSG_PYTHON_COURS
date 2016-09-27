@@ -127,7 +127,7 @@ def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
     
     :return:
 
-    >>> mat_computed = build_rotationmatrix_from_euler_micmac(pitch=0, heading=0, roll=0)
+    >>> mat_computed = build_rotationmatrix_from_euler_(pitch=0, heading=0, roll=0)
     >>> mat_expected = numpy.array( \
             [[ 1., 0.,  0.,  0.],  \
             [ 0.,  1.,  0.,  0.],   \
@@ -136,7 +136,7 @@ def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
     >>> numpy.allclose(mat_computed, mat_expected)
     True
 
-    >>> mat_computed = build_rotationmatrix_from_euler_micmac(pitch=-172.350586, heading=-75.622522, roll=-40.654833)
+    >>> mat_computed = build_rotationmatrix_from_euler_(pitch=-172.350586, heading=-75.622522, roll=-40.654833)
     >>> mat_expected = numpy.array( \
             [[ 0.90781218, -0.18017385, -0.37870098,  0.        ],  \
             [-0.07492065, -0.95815745,  0.27626291,  0.        ],   \
@@ -227,7 +227,7 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
         # on extrait les informations d'orientation
         heading, roll, pitch = extract_and_convert_heading_roll_pitch_from_dict_ori(ori)
         # on calcule la matrix de rotation a partir de ces informations d'orientation
-        matrix_rot = build_rotationmatrix_from_euler_micmac(heading, roll, pitch)
+        matrix_rot = build_rotationmatrix_from_euler_(heading, roll, pitch)
         # url: http://docs.scipy.org/doc/numpy/reference/generated/numpy.multiply.html
         view_vec = np.multiply(zaxis, viewdir_length_proj)
         # on calcule le vecteur de vue
