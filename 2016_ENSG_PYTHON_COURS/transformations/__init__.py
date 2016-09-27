@@ -5,10 +5,16 @@
 
 # from transformations import quaternion_from_euler, quaternion_matrix, euler_matrix
 # from transformations import euler_matrix
-try:
-    from transformations import euler_matrix
-except ImportError:
-    # url: https://docs.python.org/3/reference/import.html
-    from .transformations import euler_matrix
 
+# try:
+#     from transformations import euler_matrix
+# except ImportError:
+#     # url: https://docs.python.org/3/reference/import.html
+#     # from .transformations import euler_matrix
+#     from transformations import euler_matrix
+from .transformations import euler_matrix
+
+# from .transformations import euler_matrix
 # url: http://pythoncentral.io/how-to-create-a-python-package/
+
+# from transformations import *

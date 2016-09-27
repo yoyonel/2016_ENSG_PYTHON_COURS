@@ -17,11 +17,17 @@ try:
     # from transformations import euler_matrix
     import transformations
 except ImportError:
-    import sys
-    import os
-    PACKAGE_PARENT = '..'
-    SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
-    sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+    # import os
+    # PACKAGE_PARENT = '..'
+    # SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+    # sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+    #
+    # >>> import sys; sys.path.append("/app/2016_ENSG_PYTHON_COURS")
+    # >>> import transformations as tf; dir(tf)
+    # ['__builtins__', '__cached__', '__doc__', '__file__', '__initializing__', '__loader__', '__name__', '__package__', '__path__', 'euler_matrix', 'sys', 'transformations']"
+    #
+    import sys; sys.path.append("/app/2016_ENSG_PYTHON_COURS")
+    #
     import transformations
 
 import logging
