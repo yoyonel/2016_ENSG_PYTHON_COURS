@@ -1,17 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# url:
+# http://stackoverflow.com/questions/6289474/working-with-utf-8-encoding-in-python-source
+
 import os
 import glob
 from PyQt4.QtGui import QColor, QLabel, QPixmap
 import random
 import sys
 from PyQt4.QtGui import *
+# url: https://docs.python.org/2/library/random.html
+from random import randrange
 
 import platform
 
-# url: http://stackoverflow.com/questions/110362/how-can-i-find-the-current-os-in-python
+# url:
+# http://stackoverflow.com/questions/110362/how-can-i-find-the-current-os-in-python
 settings = {
     'Linux-3.13.0-24-generic-x86_64-with-LinuxMint-17.3-rosa': {
         'search_dir_images': u'/media/atty/WIN7_INST_DATAS/__DATAS__/__DEV__/OSGEO4W/2016-07-18_LI3DS_Nexus5_Synch_BatU/img',
         'search_pattern_images': u'*.jpg'
+    },
+    'Windows-7-6.1.7601-SP1': {
+        'search_dir_images': u'D:\\__DATAS__\\__DEV__\\OSGEO4W\\2016-07-18_LI3DS_Nexus5_Synch_BatU\\img',
+        'search_pattern_images': u'*.jpg',
     }
 }
 s = settings[platform.platform()]
@@ -75,7 +87,8 @@ def init_label_with_img(id_img, label=None):
     try:
         label = load_pixmap_to_label(img_filename)
     except Exception as e:
-        # url: http://stackoverflow.com/questions/1278705/python-when-i-catch-an-exception-how-do-i-get-the-type-file-and-line-number
+        # url:
+        # http://stackoverflow.com/questions/1278705/python-when-i-catch-an-exception-how-do-i-get-the-type-file-and-line-number
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
@@ -158,7 +171,8 @@ def get_random_key(d):
 
 
 def create_label_with_random_img(dict_imgs, label=QLabel()):
-    tup_qgis = (None, None)
+    # tup_qgis = (None, None)
+    label = None
     try:
         id_img = get_random_key(dict_imgs)
         dict_img = dict_imgs[id_img]
@@ -171,7 +185,7 @@ def create_label_with_random_img(dict_imgs, label=QLabel()):
         # Il faudrait retester la validite des informations a chaque
         # utilisation (ou ne plus stocker et effectuer des requetes a la volee)
         # layer_selected, featureid_selected = get_qgis_from_dict_imgs(id_img)
-        tup_qgis = layer_selected, featureid_selected = dict_img['qgis']
+        # tup_qgis = layer_selected, featureid_selected = dict_img['qgis']
         #
         label = init_label_with_img(id_img, label)
     except Exception as e:
@@ -179,16 +193,24 @@ def create_label_with_random_img(dict_imgs, label=QLabel()):
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
 
-    return label, tup_qgis
+    # return label, tup_qgis, id_img
+    return label, id_img
 
 
 def show_random_img_in_label(dict_imgs):
-    label, tup_qgis = create_label_with_random_img(dict_imgs)
+    # label, tup_qgis = create_label_with_random_img(dict_imgs)
+    # label.show()
+    # return tup_qgis
+    label, id_img = create_label_with_random_img(dict_imgs)
     label.show()
-    return tup_qgis
+    return id_img
 
 
-def select_feature_on_layer(layer_selected, featureid_selected, selection_qcolor=QColor("blue")):
+def select_feature_on_layer(
+        layer_selected, featureid_selected,
+        selection_qcolor=QColor("blue")):
+    """
+    """
     # test d'interaction avec QGIS (mapcanvas, layer, selection)
     iface.mapCanvas().setSelectionColor(selection_qcolor)
     # urls:
@@ -250,12 +272,7 @@ def build_imgs_dict(layers_compatibles):
     return dict_imgs
 
 
-def search_images(
-    search_dir_images=u'D:\\__DATAS__\\__DEV__\\OSGEO4W\\2016-07-18_LI3DS_Nexus5_Synch_BatU\\img',
-    search_pattern_images=u'*.jpg'
-):
-    """
-    """
+def search_images(search_dir_images, search_pattern_images=u'*.jpg'):
     list_img_dirs, list_img_basename = [], []
     try:
         # search images files
@@ -274,6 +291,100 @@ def search_images(
     return list_img_dirs, list_img_basename
 
 
+def get_qstring_random_color():
+    return '%d, %d, %d' % (
+        randrange(0, 256), randrange(0, 256), randrange(0, 256))
+
+
+def configure_layer_renderer(dict_imgs, id_img, field):
+    # urls:
+    # - https://qgis.org/api/qgsmarkersymbollayerv2_8cpp_source.html
+    # - http://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/vector.html#appearance-symbology-of-vector-layers
+    # - http://gis.stackexchange.com/questions/175068/apply-symbol-to-each-feature-categorized-symbol
+    # - http://gis.stackexchange.com/questions/59682/how-to-set-marker-line-symbol-for-qgsvectorlayer-by-using-python
+
+    # Get the active layer (must be a vector layer)
+    # layer = qgis.utils.iface.activeLayer()
+    layer, featureid_selected = dict_imgs[id_img]['qgis']
+
+    print("id_img: %s" % id_img)
+
+    # get unique values
+    fni = layer.fieldNameIndex(field)
+    unique_values = layer.dataProvider().uniqueValues(fni)
+
+    # define categories
+    categories = []
+
+    layer_styles = (
+        # 'unselected'
+        {
+            'outline_color': '0, 0, 0',
+            'size': '2',
+            'name': 'circle'
+        },
+        # 'selected'
+        {
+            'outline_color': '255, 0, 0',
+            'size': '15',
+            'name': 'regular_star'
+        }
+    )
+    #
+    layer_style = {}
+
+    for unique_value in unique_values:
+        # initialize the default symbol for this geometry type
+        symbol = QgsSymbolV2.defaultSymbol(layer.geometryType())
+
+        # configure a symbol layer
+        # layer_style = {}
+        # layer_style['color'] = '%d, %d, %d' % (randrange(0,256), randrange(0,256), randrange(0,256))
+        # layer_style['outline'] = '#000000'
+        # symbol_layer = QgsSimpleFillSymbolLayerV2.create(layer_style)
+        #
+        # configure a symbol layer
+        # simple_marker = QgsSimpleMarkerSymbolLayerV2()
+        # simple_marker.setAngle(0)
+        # simple_marker.setColor(
+        #     QColor(randrange(0, 256), randrange(0, 256), randrange(0, 256)))
+        # if id_img == unique_value:
+        #     simple_marker.setShape(QgsSimpleMarkerSymbolLayerBase.Star)
+        #     simple_marker.setSize(15)
+        # else:
+        #     simple_marker.setShape(QgsSimpleMarkerSymbolLayerBase.Circle)
+        #     # simple_marker.setColor(QColor('red'))
+        #     simple_marker.setSize(5)
+        # simple_marker.setOutlineColor(QColor(0, 0, 0))
+
+        layer_style['color'] = get_qstring_random_color()
+        layer_style.update(layer_styles[int(id_img == unique_value)])
+
+        #
+        simple_marker = QgsSimpleMarkerSymbolLayerV2.create(layer_style)
+        #
+
+        # replace default symbol layer with the configured one
+        # if symbol_layer is not None:
+        #     symbol.changeSymbolLayer(0, symbol_layer)
+        if simple_marker is not None:
+            symbol.changeSymbolLayer(0, simple_marker)
+
+        # create renderer object
+        category = QgsRendererCategoryV2(
+            unique_value, symbol, str(unique_value))
+        # entry for the list of category items
+        categories.append(category)
+
+    # create renderer object
+    renderer = QgsCategorizedSymbolRendererV2(field, categories)
+
+    # assign the created renderer to the layer
+    if renderer is not None:
+        layer.setRendererV2(renderer)
+    layer.triggerRepaint()
+
+
 #############
 ### MAIN ####
 #############
@@ -287,17 +398,27 @@ if __name__ == '__main__' or __name__ == '__console__':
 
     # On recupere tous les layers QGIS disponibles
     layers = iface.mapCanvas().layers()
-    # On les filtre avec nos criteres de recherche
+    # 1er filtre: on ne s'interesse qu'aux VectorLayers
+    # url:
+    # http://gis.stackexchange.com/questions/26257/how-can-i-iterate-over-map-layers-in-qgis-python
+    layers = filter(
+        lambda layer: layer.type() == QgsMapLayer.VectorLayer, layers)
+    # 2nd filtre: on ne s'intéresse qu'aux VectorLayers possedant au moins 2
+    # champs: 'id' et 'position'
     layers_compatibles = get_vector_layers_with_fields_v2a(
         layers, [u'id', u'position'])
-
+    # Layers (potentiellement) compatibles
     print("layers_compatibles: %s" % (layers_compatibles))
+    #
     dict_imgs = build_imgs_dict(layers_compatibles)
 
-    layer_selected, feature_selected = show_random_img_in_label(dict_imgs)
+    id_img = show_random_img_in_label(dict_imgs)
+    layer_selected, feature_selected = dict_imgs[id_img]['qgis']
     select_feature_on_layer(layer_selected, feature_selected)
 
     print("Nb images synch with QGIS: %d" % (len(dict_imgs)))
+
+    configure_layer_renderer(dict_imgs, id_img, 'id')
 else:
     print("__name__: %s" % __name__)
 #############
