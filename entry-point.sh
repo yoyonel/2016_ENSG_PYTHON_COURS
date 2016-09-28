@@ -1,4 +1,4 @@
 #!/bin/sh
 
-export PATH=$PATH:$(realpaht scripts)
+export PATH=$PATH:$(realpath scripts)
 ls -1 scripts/*.sh
