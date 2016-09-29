@@ -1,5 +1,5 @@
 # FROM themattrix/tox
-# FROM ignf/tox
-FROM yoyo/tox
+FROM ignf/tox:latest
+# FROM yoyo/tox
 
 MAINTAINER ATTY Lionel <lionel.atty@ign.fr>
