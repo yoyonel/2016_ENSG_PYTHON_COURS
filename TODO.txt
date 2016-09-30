@@ -1,0 +1,1 @@
+Rajouter un requierements.txt pour les dépendances de packages python pour le script !
