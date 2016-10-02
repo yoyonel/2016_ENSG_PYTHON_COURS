@@ -1,1 +1,20 @@
-Rajouter un requierements.txt pour les dépendances de packages python pour le script !
+* Rajouter un requierements.txt pour les dépendances de packages python pour le script !
+
+2016/10/02:
+* Mettre en place le plug en mode off line par rapport à l'application QGIS.
+Ca serait intéressant d'avoir la possibilité de lancer le script 'print_attributes_geometry_of_vectorlayer.py' en dehors de QGIS (Desktop).
+Dans le script de test 'test/gui/gui_test.py' se trouve des brics (techno) pour réaliser cet objectif.
+Réaliser cette tâche permettrait d'avoir un outil de debug plus efficace (possibilité de tracer/breaker le script (via PyCharm ou autre)), de mettre en place des tests unitaires, etc ...
+
+* Il faudrait voir/revoir pour la découpe du script 'print_attributes_geometry_of_vectorlayer.py' pour bien séparer les parties fonctionnelles/algorithmiques et les parties QGIS gui d'interfaces (rendus graphiques). 
+A voir pour la formulation de cette séparation, si on met en place un système offline cette séparation devient plus floue ...
+Il faudrait au final bien séparer le spécifique/dédiée et le générique/template. Revoir les algos: 
+- recherche de fichiers (images)
+- mise en corrélation de listes/ids: recherche des ids images dans une liste de path vers images
+- création des features pour le layer de rendu des positions des images: il y a une création de liste de dictionnaires qu'on peut abstraire
+=> Il faudrait dans 1er temps découper en plusieurs fichiers/modules pour réduire l'aspect monolythique du/des script(s).
+
+* Faudrait pouvoir quantifier l'apport de l'utilisation des recherches dichotomiques (bisect_left) par rapport à une simple recherche dans une liste (<element> in <list> -> bool).
+Mettre en place un mini bench ou des outils (simples) pour réaliser des tests de performances (timings des méthodes). 
+
+* Rajout de documentations: Dans un 1er test, juste de la documentation simple dans les commentaires. Voir après pour des versions Sphinx/Numpy/Google, Doxygen et des scripts de builds de documentations (Sphinx et Doxygen).
