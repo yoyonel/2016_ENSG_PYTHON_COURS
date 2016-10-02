@@ -9,7 +9,7 @@
     <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="OriExport_Ori_RTL_Init_view_dir20160927230859166" name="OriExport_Ori-RTL-Init_view_dir">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="OpenStreetMap20160928185439918" name="OpenStreetMap">
+    <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="OpenStreetMap20160928185439918" name="OpenStreetMap">
       <customproperties/>
     </layer-tree-layer>
   </layer-tree-group>
@@ -17,10 +17,10 @@
   <mapcanvas>
     <units>meters</units>
     <extent>
-      <xmin>269831.55066814896417782</xmin>
-      <ymin>6248573.10507997497916222</ymin>
-      <xmax>269867.83379183587385342</xmax>
-      <ymax>6248585.44812389835715294</ymax>
+      <xmin>269844.26989127800334245</xmin>
+      <ymin>6248574.52655861247330904</ymin>
+      <xmax>269856.38654577860143036</xmax>
+      <ymax>6248581.99867198895663023</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
@@ -61,9 +61,9 @@
         <legendlayerfile isInOverview="0" layerid="OriExport_Ori_RTL_Init_view_dir20160927230859166" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="OpenStreetMap" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="OpenStreetMap" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="OpenStreetMap20160928185439918" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="OpenStreetMap20160928185439918" visible="0"/>
       </filegroup>
     </legendlayer>
   </legend>
@@ -428,7 +428,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="0">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="166,250,105,255"/>
+              <prop k="color" v="159,157,47,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -449,7 +449,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="1">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="42,21,144,255"/>
+              <prop k="color" v="81,173,181,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -470,7 +470,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="10">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="191,31,208,255"/>
+              <prop k="color" v="159,110,228,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -491,7 +491,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="100">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="98,119,57,255"/>
+              <prop k="color" v="47,214,22,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -512,7 +512,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="101">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="77,254,80,255"/>
+              <prop k="color" v="146,123,169,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -533,7 +533,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="102">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="222,230,221,255"/>
+              <prop k="color" v="117,89,93,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -554,7 +554,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="103">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="37,224,102,255"/>
+              <prop k="color" v="161,65,249,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -575,7 +575,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="104">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="19,42,193,255"/>
+              <prop k="color" v="138,13,142,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -596,7 +596,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="105">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="219,206,55,255"/>
+              <prop k="color" v="17,54,91,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -617,7 +617,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="106">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="145,216,27,255"/>
+              <prop k="color" v="229,47,77,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -638,7 +638,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="107">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="206,109,219,255"/>
+              <prop k="color" v="32,178,235,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -659,7 +659,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="108">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="206,59,100,255"/>
+              <prop k="color" v="249,78,87,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -680,7 +680,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="109">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="29,6,243,255"/>
+              <prop k="color" v="73,26,22,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -701,7 +701,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="11">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="182,176,137,255"/>
+              <prop k="color" v="31,19,243,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -722,7 +722,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="110">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="179,163,234,255"/>
+              <prop k="color" v="7,250,151,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -743,7 +743,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="111">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="182,166,57,255"/>
+              <prop k="color" v="68,51,149,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -764,7 +764,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="112">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="248,192,102,255"/>
+              <prop k="color" v="156,9,123,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -785,7 +785,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="113">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="135,98,234,255"/>
+              <prop k="color" v="27,80,73,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -806,7 +806,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="114">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="0,193,112,255"/>
+              <prop k="color" v="51,192,37,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -827,7 +827,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="115">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="117,245,197,255"/>
+              <prop k="color" v="140,158,98,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -848,7 +848,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="116">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="124,252,167,255"/>
+              <prop k="color" v="111,236,28,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -869,7 +869,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="117">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="120,93,106,255"/>
+              <prop k="color" v="129,134,205,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -890,7 +890,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="118">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="100,48,250,255"/>
+              <prop k="color" v="183,230,46,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -911,7 +911,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="119">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="69,177,174,255"/>
+              <prop k="color" v="101,147,191,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -932,7 +932,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="12">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="180,108,101,255"/>
+              <prop k="color" v="75,178,48,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -953,7 +953,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="120">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="6,108,67,255"/>
+              <prop k="color" v="184,201,38,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -974,7 +974,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="121">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="138,181,249,255"/>
+              <prop k="color" v="165,30,175,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -995,7 +995,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="122">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="205,139,30,255"/>
+              <prop k="color" v="226,45,69,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1016,7 +1016,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="123">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="194,14,198,255"/>
+              <prop k="color" v="170,109,198,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1037,7 +1037,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="124">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="27,25,127,255"/>
+              <prop k="color" v="122,97,27,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1058,7 +1058,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="125">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="204,107,45,255"/>
+              <prop k="color" v="199,98,223,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1079,7 +1079,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="126">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="225,230,155,255"/>
+              <prop k="color" v="107,237,84,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1100,7 +1100,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="127">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="36,1,36,255"/>
+              <prop k="color" v="44,200,126,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1121,7 +1121,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="128">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="247,90,39,255"/>
+              <prop k="color" v="126,26,111,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1142,7 +1142,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="129">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="241,127,40,255"/>
+              <prop k="color" v="255,101,71,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1163,7 +1163,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="13">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="57,161,83,255"/>
+              <prop k="color" v="209,126,1,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1184,7 +1184,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="130">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="179,146,73,255"/>
+              <prop k="color" v="117,67,114,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1205,7 +1205,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="131">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="73,113,96,255"/>
+              <prop k="color" v="169,20,125,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1226,7 +1226,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="132">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="69,96,212,255"/>
+              <prop k="color" v="183,117,32,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1247,7 +1247,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="133">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="16,169,87,255"/>
+              <prop k="color" v="60,198,59,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1268,7 +1268,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="134">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="6,180,40,255"/>
+              <prop k="color" v="207,196,77,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1289,7 +1289,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="135">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="134,5,242,255"/>
+              <prop k="color" v="191,158,220,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1310,7 +1310,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="136">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="166,10,13,255"/>
+              <prop k="color" v="129,248,75,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1331,7 +1331,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="137">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="135,193,230,255"/>
+              <prop k="color" v="104,223,114,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1352,7 +1352,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="138">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="138,138,78,255"/>
+              <prop k="color" v="102,90,116,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1373,7 +1373,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="139">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="220,108,247,255"/>
+              <prop k="color" v="254,154,98,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1394,7 +1394,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="14">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="239,160,146,255"/>
+              <prop k="color" v="48,13,45,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1415,7 +1415,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="140">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="44,197,103,255"/>
+              <prop k="color" v="23,107,223,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1436,7 +1436,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="141">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="7,219,154,255"/>
+              <prop k="color" v="248,242,160,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1457,7 +1457,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="142">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="51,181,56,255"/>
+              <prop k="color" v="250,75,3,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1478,7 +1478,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="143">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="25,136,44,255"/>
+              <prop k="color" v="0,237,116,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1499,7 +1499,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="144">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="32,225,147,255"/>
+              <prop k="color" v="197,151,85,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1520,19 +1520,19 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="145">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="149,83,73,255"/>
+              <prop k="color" v="157,203,95,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
-              <prop k="name" v="circle"/>
+              <prop k="name" v="regular_star"/>
               <prop k="offset" v="0,0"/>
               <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
-              <prop k="outline_color" v="0,0,0,255"/>
+              <prop k="outline_color" v="255,0,0,255"/>
               <prop k="outline_style" v="solid"/>
               <prop k="outline_width" v="0"/>
               <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="outline_width_unit" v="MM"/>
               <prop k="scale_method" v="diameter"/>
-              <prop k="size" v="2"/>
+              <prop k="size" v="15"/>
               <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="size_unit" v="MM"/>
               <prop k="vertical_anchor_point" v="1"/>
@@ -1541,7 +1541,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="146">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="82,132,33,255"/>
+              <prop k="color" v="133,187,187,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1562,7 +1562,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="147">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="201,23,204,255"/>
+              <prop k="color" v="169,141,50,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1583,7 +1583,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="148">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="142,3,19,255"/>
+              <prop k="color" v="147,241,225,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1604,7 +1604,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="149">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="29,187,92,255"/>
+              <prop k="color" v="58,180,0,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1625,7 +1625,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="15">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="217,239,195,255"/>
+              <prop k="color" v="51,111,63,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1646,7 +1646,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="150">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="111,177,205,255"/>
+              <prop k="color" v="170,121,203,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1667,7 +1667,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="151">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="122,189,169,255"/>
+              <prop k="color" v="3,44,141,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1688,7 +1688,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="152">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="98,2,246,255"/>
+              <prop k="color" v="92,106,120,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1709,7 +1709,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="153">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="30,29,89,255"/>
+              <prop k="color" v="253,21,26,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1730,7 +1730,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="154">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="136,250,12,255"/>
+              <prop k="color" v="45,120,108,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1751,7 +1751,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="155">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="33,230,141,255"/>
+              <prop k="color" v="91,246,125,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1772,7 +1772,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="156">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="218,163,173,255"/>
+              <prop k="color" v="223,139,154,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1793,7 +1793,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="157">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="40,131,235,255"/>
+              <prop k="color" v="121,119,42,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1814,7 +1814,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="158">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="21,174,225,255"/>
+              <prop k="color" v="236,150,204,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1835,7 +1835,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="159">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="143,105,116,255"/>
+              <prop k="color" v="82,64,184,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1856,7 +1856,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="16">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="165,28,61,255"/>
+              <prop k="color" v="196,108,207,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1877,7 +1877,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="160">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="137,216,131,255"/>
+              <prop k="color" v="145,93,231,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1898,7 +1898,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="161">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="202,48,244,255"/>
+              <prop k="color" v="31,50,95,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1919,7 +1919,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="162">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="18,188,100,255"/>
+              <prop k="color" v="161,77,74,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1940,7 +1940,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="163">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="168,111,247,255"/>
+              <prop k="color" v="91,235,204,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1961,7 +1961,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="164">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="32,248,198,255"/>
+              <prop k="color" v="110,189,132,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -1982,7 +1982,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="165">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="236,196,6,255"/>
+              <prop k="color" v="166,109,102,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2003,7 +2003,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="166">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="247,33,30,255"/>
+              <prop k="color" v="207,21,146,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2024,7 +2024,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="167">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="205,214,58,255"/>
+              <prop k="color" v="83,171,200,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2045,7 +2045,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="168">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="118,182,185,255"/>
+              <prop k="color" v="249,182,241,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2066,7 +2066,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="169">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="127,141,86,255"/>
+              <prop k="color" v="161,254,82,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2087,7 +2087,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="17">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="145,227,167,255"/>
+              <prop k="color" v="66,165,75,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2108,7 +2108,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="170">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="119,36,26,255"/>
+              <prop k="color" v="190,232,194,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2129,7 +2129,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="171">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="5,64,73,255"/>
+              <prop k="color" v="61,63,15,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2150,7 +2150,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="172">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="226,41,108,255"/>
+              <prop k="color" v="87,93,126,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2171,7 +2171,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="173">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="184,70,195,255"/>
+              <prop k="color" v="223,20,96,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2192,7 +2192,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="174">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="78,144,44,255"/>
+              <prop k="color" v="47,78,40,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2213,7 +2213,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="175">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="75,153,225,255"/>
+              <prop k="color" v="173,71,75,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2234,7 +2234,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="176">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="112,236,35,255"/>
+              <prop k="color" v="177,29,47,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2255,7 +2255,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="177">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="13,148,185,255"/>
+              <prop k="color" v="125,198,62,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2276,7 +2276,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="178">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="79,66,111,255"/>
+              <prop k="color" v="12,174,113,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2297,7 +2297,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="179">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="212,40,160,255"/>
+              <prop k="color" v="116,197,221,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2318,7 +2318,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="18">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="224,146,15,255"/>
+              <prop k="color" v="47,28,10,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2339,7 +2339,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="180">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="33,51,21,255"/>
+              <prop k="color" v="20,122,124,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2360,7 +2360,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="181">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="94,123,96,255"/>
+              <prop k="color" v="240,179,52,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2381,7 +2381,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="182">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="227,235,184,255"/>
+              <prop k="color" v="247,127,94,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2402,7 +2402,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="183">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="90,198,251,255"/>
+              <prop k="color" v="94,152,147,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2423,7 +2423,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="184">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="6,53,186,255"/>
+              <prop k="color" v="163,149,208,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2444,7 +2444,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="185">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="66,142,162,255"/>
+              <prop k="color" v="220,237,221,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2465,7 +2465,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="186">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="157,103,178,255"/>
+              <prop k="color" v="189,71,158,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2486,7 +2486,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="187">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="114,233,5,255"/>
+              <prop k="color" v="222,6,161,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2507,7 +2507,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="188">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="73,162,229,255"/>
+              <prop k="color" v="95,220,18,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2528,7 +2528,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="189">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="186,191,234,255"/>
+              <prop k="color" v="96,46,149,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2549,7 +2549,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="19">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="14,29,124,255"/>
+              <prop k="color" v="71,104,42,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2570,7 +2570,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="190">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="109,34,181,255"/>
+              <prop k="color" v="164,66,110,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2591,7 +2591,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="191">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="76,165,72,255"/>
+              <prop k="color" v="99,110,49,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2612,7 +2612,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="192">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="118,90,116,255"/>
+              <prop k="color" v="95,55,39,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2633,7 +2633,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="193">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="66,3,82,255"/>
+              <prop k="color" v="148,10,45,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2654,19 +2654,19 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="194">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="247,3,162,255"/>
+              <prop k="color" v="0,17,71,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
-              <prop k="name" v="star"/>
+              <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
               <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
-              <prop k="outline_color" v="255,0,0,255"/>
+              <prop k="outline_color" v="0,0,0,255"/>
               <prop k="outline_style" v="solid"/>
               <prop k="outline_width" v="0"/>
               <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="outline_width_unit" v="MM"/>
               <prop k="scale_method" v="diameter"/>
-              <prop k="size" v="15"/>
+              <prop k="size" v="2"/>
               <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="size_unit" v="MM"/>
               <prop k="vertical_anchor_point" v="1"/>
@@ -2675,7 +2675,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="195">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="73,165,250,255"/>
+              <prop k="color" v="133,140,175,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2696,7 +2696,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="196">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="51,159,103,255"/>
+              <prop k="color" v="101,238,11,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2717,7 +2717,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="197">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="201,213,164,255"/>
+              <prop k="color" v="199,119,139,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2738,7 +2738,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="198">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="245,34,219,255"/>
+              <prop k="color" v="147,21,131,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2759,7 +2759,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="199">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="221,47,112,255"/>
+              <prop k="color" v="31,126,21,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2780,7 +2780,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="2">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="194,82,183,255"/>
+              <prop k="color" v="18,30,22,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2801,7 +2801,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="20">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="195,157,61,255"/>
+              <prop k="color" v="191,202,88,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2822,7 +2822,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="200">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="186,173,246,255"/>
+              <prop k="color" v="99,86,232,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2843,7 +2843,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="201">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="79,103,9,255"/>
+              <prop k="color" v="227,127,113,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2864,7 +2864,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="202">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="21,18,59,255"/>
+              <prop k="color" v="121,106,175,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2885,7 +2885,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="203">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="172,249,42,255"/>
+              <prop k="color" v="105,196,206,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2906,7 +2906,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="204">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="166,133,193,255"/>
+              <prop k="color" v="59,99,215,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2927,7 +2927,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="205">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="234,68,154,255"/>
+              <prop k="color" v="97,251,5,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2948,7 +2948,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="206">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="46,136,97,255"/>
+              <prop k="color" v="24,132,67,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2969,7 +2969,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="207">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="193,14,133,255"/>
+              <prop k="color" v="237,184,232,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -2990,7 +2990,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="208">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="101,63,106,255"/>
+              <prop k="color" v="235,27,43,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3011,7 +3011,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="209">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="84,185,76,255"/>
+              <prop k="color" v="27,251,77,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3032,7 +3032,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="21">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="126,239,72,255"/>
+              <prop k="color" v="249,230,53,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3053,7 +3053,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="210">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="151,188,138,255"/>
+              <prop k="color" v="240,179,93,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3074,7 +3074,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="211">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="241,44,130,255"/>
+              <prop k="color" v="197,66,32,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3095,7 +3095,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="212">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="39,178,184,255"/>
+              <prop k="color" v="86,149,203,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3116,7 +3116,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="213">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="70,69,139,255"/>
+              <prop k="color" v="39,47,169,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3137,7 +3137,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="214">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="165,249,1,255"/>
+              <prop k="color" v="127,221,205,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3158,7 +3158,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="215">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="119,172,231,255"/>
+              <prop k="color" v="147,89,26,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3179,7 +3179,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="216">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="8,158,105,255"/>
+              <prop k="color" v="16,171,228,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3200,7 +3200,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="217">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="80,134,16,255"/>
+              <prop k="color" v="7,4,25,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3221,7 +3221,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="218">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="110,83,235,255"/>
+              <prop k="color" v="207,223,203,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3242,7 +3242,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="219">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="75,50,57,255"/>
+              <prop k="color" v="53,174,200,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3263,7 +3263,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="22">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="110,97,4,255"/>
+              <prop k="color" v="141,12,9,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3284,7 +3284,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="220">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="23,228,140,255"/>
+              <prop k="color" v="5,126,226,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3305,7 +3305,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="221">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="104,77,125,255"/>
+              <prop k="color" v="165,16,223,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3326,7 +3326,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="222">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="20,30,200,255"/>
+              <prop k="color" v="113,131,29,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3347,7 +3347,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="223">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="82,62,255,255"/>
+              <prop k="color" v="185,175,161,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3368,7 +3368,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="224">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="130,99,93,255"/>
+              <prop k="color" v="85,206,161,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3389,7 +3389,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="225">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="13,250,41,255"/>
+              <prop k="color" v="138,27,155,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3410,7 +3410,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="226">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="27,227,107,255"/>
+              <prop k="color" v="180,126,214,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3431,7 +3431,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="227">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="166,43,61,255"/>
+              <prop k="color" v="255,227,5,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3452,7 +3452,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="228">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="189,241,210,255"/>
+              <prop k="color" v="182,154,140,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3473,7 +3473,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="229">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="172,145,30,255"/>
+              <prop k="color" v="127,41,240,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3494,7 +3494,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="23">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="126,76,146,255"/>
+              <prop k="color" v="212,129,252,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3515,7 +3515,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="230">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="149,25,215,255"/>
+              <prop k="color" v="67,189,64,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3536,7 +3536,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="231">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="75,219,14,255"/>
+              <prop k="color" v="146,8,72,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3557,7 +3557,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="232">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="107,152,164,255"/>
+              <prop k="color" v="188,53,209,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3578,7 +3578,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="233">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="41,136,206,255"/>
+              <prop k="color" v="144,38,45,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3599,7 +3599,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="234">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="38,158,44,255"/>
+              <prop k="color" v="59,143,133,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3620,7 +3620,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="235">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="183,69,170,255"/>
+              <prop k="color" v="38,215,139,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3641,7 +3641,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="236">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="80,204,154,255"/>
+              <prop k="color" v="248,150,70,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3662,7 +3662,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="237">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="62,247,74,255"/>
+              <prop k="color" v="123,20,178,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3683,7 +3683,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="238">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="244,195,182,255"/>
+              <prop k="color" v="47,85,250,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3704,7 +3704,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="239">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="150,76,140,255"/>
+              <prop k="color" v="2,179,118,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3725,7 +3725,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="24">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="75,111,63,255"/>
+              <prop k="color" v="127,41,205,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3746,7 +3746,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="240">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="211,12,46,255"/>
+              <prop k="color" v="226,178,111,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3767,7 +3767,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="241">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="127,241,101,255"/>
+              <prop k="color" v="108,131,246,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3788,7 +3788,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="242">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="72,79,186,255"/>
+              <prop k="color" v="26,152,215,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3809,7 +3809,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="243">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="197,7,181,255"/>
+              <prop k="color" v="87,130,137,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3830,7 +3830,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="244">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="61,118,186,255"/>
+              <prop k="color" v="203,8,80,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3851,7 +3851,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="245">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="162,216,2,255"/>
+              <prop k="color" v="28,150,225,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3872,7 +3872,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="246">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="106,103,192,255"/>
+              <prop k="color" v="109,221,169,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3893,7 +3893,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="247">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="105,127,240,255"/>
+              <prop k="color" v="34,123,247,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3914,7 +3914,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="248">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="47,232,29,255"/>
+              <prop k="color" v="238,226,178,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3935,7 +3935,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="249">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="102,184,240,255"/>
+              <prop k="color" v="103,76,117,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3956,7 +3956,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="25">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="122,140,253,255"/>
+              <prop k="color" v="40,90,45,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3977,7 +3977,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="250">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="216,41,194,255"/>
+              <prop k="color" v="194,92,109,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -3998,7 +3998,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="251">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="222,255,173,255"/>
+              <prop k="color" v="127,207,252,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4019,7 +4019,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="252">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="119,81,104,255"/>
+              <prop k="color" v="1,25,30,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4040,7 +4040,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="253">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="141,3,76,255"/>
+              <prop k="color" v="146,7,32,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4061,7 +4061,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="254">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="226,111,176,255"/>
+              <prop k="color" v="66,74,216,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4082,7 +4082,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="255">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="218,68,19,255"/>
+              <prop k="color" v="192,113,169,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4103,7 +4103,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="26">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="203,81,198,255"/>
+              <prop k="color" v="38,103,201,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4124,7 +4124,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="27">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="148,205,128,255"/>
+              <prop k="color" v="197,206,220,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4145,7 +4145,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="28">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="53,187,127,255"/>
+              <prop k="color" v="46,176,206,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4166,7 +4166,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="29">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="50,189,62,255"/>
+              <prop k="color" v="82,159,82,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4187,7 +4187,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="3">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="165,202,134,255"/>
+              <prop k="color" v="110,174,153,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4208,7 +4208,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="30">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="64,210,81,255"/>
+              <prop k="color" v="35,43,252,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4229,7 +4229,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="31">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="130,187,16,255"/>
+              <prop k="color" v="192,238,188,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4250,7 +4250,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="32">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="253,29,78,255"/>
+              <prop k="color" v="215,76,138,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4271,7 +4271,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="33">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="16,187,154,255"/>
+              <prop k="color" v="20,58,3,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4292,7 +4292,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="34">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="47,245,162,255"/>
+              <prop k="color" v="255,114,8,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4313,7 +4313,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="35">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="183,76,117,255"/>
+              <prop k="color" v="7,168,114,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4334,7 +4334,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="36">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="110,175,185,255"/>
+              <prop k="color" v="174,49,102,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4355,7 +4355,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="37">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="252,47,228,255"/>
+              <prop k="color" v="244,147,154,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4376,7 +4376,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="38">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="64,91,163,255"/>
+              <prop k="color" v="12,79,112,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4397,7 +4397,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="39">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="96,156,124,255"/>
+              <prop k="color" v="240,173,241,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4418,7 +4418,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="4">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="190,41,186,255"/>
+              <prop k="color" v="10,145,103,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4439,7 +4439,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="40">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="112,86,52,255"/>
+              <prop k="color" v="113,130,106,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4460,7 +4460,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="41">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="131,51,26,255"/>
+              <prop k="color" v="81,32,251,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4481,7 +4481,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="42">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="232,206,16,255"/>
+              <prop k="color" v="213,4,136,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4502,7 +4502,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="43">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="196,109,177,255"/>
+              <prop k="color" v="45,155,205,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4523,7 +4523,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="44">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="149,246,123,255"/>
+              <prop k="color" v="24,255,27,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4544,7 +4544,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="45">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="39,152,34,255"/>
+              <prop k="color" v="242,78,48,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4565,7 +4565,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="46">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="103,12,198,255"/>
+              <prop k="color" v="144,83,181,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4586,7 +4586,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="47">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="228,120,53,255"/>
+              <prop k="color" v="182,25,158,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4607,7 +4607,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="48">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="152,163,204,255"/>
+              <prop k="color" v="218,23,51,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4628,7 +4628,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="49">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="248,102,183,255"/>
+              <prop k="color" v="50,230,37,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4649,7 +4649,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="5">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="33,179,113,255"/>
+              <prop k="color" v="216,237,99,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4670,7 +4670,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="50">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="218,244,76,255"/>
+              <prop k="color" v="188,152,206,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4691,7 +4691,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="51">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="46,174,185,255"/>
+              <prop k="color" v="92,176,111,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4712,7 +4712,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="52">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="37,127,171,255"/>
+              <prop k="color" v="136,146,106,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4733,7 +4733,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="53">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="9,25,224,255"/>
+              <prop k="color" v="63,37,118,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4754,7 +4754,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="54">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="15,134,229,255"/>
+              <prop k="color" v="29,45,176,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4775,7 +4775,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="55">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="75,186,158,255"/>
+              <prop k="color" v="89,179,103,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4796,7 +4796,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="56">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="216,55,231,255"/>
+              <prop k="color" v="247,250,156,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4817,7 +4817,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="57">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="169,128,31,255"/>
+              <prop k="color" v="220,50,180,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4838,7 +4838,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="58">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="223,39,210,255"/>
+              <prop k="color" v="253,18,247,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4859,7 +4859,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="59">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="27,111,68,255"/>
+              <prop k="color" v="71,173,113,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4880,7 +4880,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="6">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="214,116,130,255"/>
+              <prop k="color" v="29,106,150,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4901,7 +4901,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="60">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="114,1,117,255"/>
+              <prop k="color" v="252,4,143,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4922,7 +4922,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="61">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="165,76,129,255"/>
+              <prop k="color" v="40,45,164,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4943,7 +4943,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="62">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="247,242,201,255"/>
+              <prop k="color" v="138,78,46,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4964,7 +4964,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="63">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="159,195,246,255"/>
+              <prop k="color" v="42,202,81,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -4985,7 +4985,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="64">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="43,173,76,255"/>
+              <prop k="color" v="8,176,250,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5006,7 +5006,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="65">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="152,243,61,255"/>
+              <prop k="color" v="99,65,126,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5027,7 +5027,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="66">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="233,66,75,255"/>
+              <prop k="color" v="227,52,64,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5048,7 +5048,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="67">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="242,235,2,255"/>
+              <prop k="color" v="226,181,245,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5069,7 +5069,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="68">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="21,164,215,255"/>
+              <prop k="color" v="19,234,81,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5090,7 +5090,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="69">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="122,55,192,255"/>
+              <prop k="color" v="216,122,168,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5111,7 +5111,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="7">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="163,89,61,255"/>
+              <prop k="color" v="56,106,18,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5132,7 +5132,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="70">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="20,127,21,255"/>
+              <prop k="color" v="50,9,21,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5153,7 +5153,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="71">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="158,136,7,255"/>
+              <prop k="color" v="162,30,0,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5174,7 +5174,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="72">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="115,158,236,255"/>
+              <prop k="color" v="134,64,56,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5195,7 +5195,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="73">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="51,242,4,255"/>
+              <prop k="color" v="179,235,75,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5216,7 +5216,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="74">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="113,0,169,255"/>
+              <prop k="color" v="128,229,188,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5237,7 +5237,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="75">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="189,86,143,255"/>
+              <prop k="color" v="106,116,193,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5258,7 +5258,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="76">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="56,217,209,255"/>
+              <prop k="color" v="95,100,216,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5279,7 +5279,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="77">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="227,104,204,255"/>
+              <prop k="color" v="252,197,140,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5300,7 +5300,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="78">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="104,183,142,255"/>
+              <prop k="color" v="92,65,193,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5321,7 +5321,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="79">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="97,131,208,255"/>
+              <prop k="color" v="175,147,237,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5342,7 +5342,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="8">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="235,75,232,255"/>
+              <prop k="color" v="112,194,140,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5363,7 +5363,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="80">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="15,127,160,255"/>
+              <prop k="color" v="96,205,85,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5384,7 +5384,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="81">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="77,31,50,255"/>
+              <prop k="color" v="111,47,78,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5405,7 +5405,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="82">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="34,2,91,255"/>
+              <prop k="color" v="200,45,14,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5426,7 +5426,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="83">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="120,98,191,255"/>
+              <prop k="color" v="150,27,209,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5447,7 +5447,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="84">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="31,101,15,255"/>
+              <prop k="color" v="162,95,91,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5468,7 +5468,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="85">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="249,167,202,255"/>
+              <prop k="color" v="112,187,169,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5489,7 +5489,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="86">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="131,117,82,255"/>
+              <prop k="color" v="237,44,46,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5510,7 +5510,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="87">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="189,117,44,255"/>
+              <prop k="color" v="134,245,123,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5531,7 +5531,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="88">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="136,232,219,255"/>
+              <prop k="color" v="80,60,167,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5552,7 +5552,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="89">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="85,178,19,255"/>
+              <prop k="color" v="233,219,3,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5573,7 +5573,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="9">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="208,62,13,255"/>
+              <prop k="color" v="29,98,242,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5594,7 +5594,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="90">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="180,126,165,255"/>
+              <prop k="color" v="169,7,240,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5615,7 +5615,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="91">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="61,53,181,255"/>
+              <prop k="color" v="27,88,171,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5636,7 +5636,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="92">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="96,8,182,255"/>
+              <prop k="color" v="164,102,125,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5657,7 +5657,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="93">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="28,81,236,255"/>
+              <prop k="color" v="21,201,218,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5678,7 +5678,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="94">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="85,18,22,255"/>
+              <prop k="color" v="205,236,19,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5699,7 +5699,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="95">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="22,104,128,255"/>
+              <prop k="color" v="3,68,36,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5720,7 +5720,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="96">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="40,34,151,255"/>
+              <prop k="color" v="153,25,195,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5741,7 +5741,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="97">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="239,220,105,255"/>
+              <prop k="color" v="226,175,64,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5762,7 +5762,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="98">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="36,154,75,255"/>
+              <prop k="color" v="17,11,157,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
@@ -5783,7 +5783,7 @@
           <symbol alpha="1" clip_to_extent="1" type="marker" name="99">
             <layer pass="0" class="SimpleMarker" locked="0">
               <prop k="angle" v="0"/>
-              <prop k="color" v="137,25,188,255"/>
+              <prop k="color" v="250,161,128,255"/>
               <prop k="horizontal_anchor_point" v="1"/>
               <prop k="name" v="circle"/>
               <prop k="offset" v="0,0"/>
