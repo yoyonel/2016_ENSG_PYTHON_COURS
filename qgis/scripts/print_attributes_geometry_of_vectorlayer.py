@@ -14,6 +14,13 @@ from random import randrange
 
 import platform
 
+import logging
+
+from logging.handlers import RotatingFileHandler
+
+# création de l'objet logger qui va nous servir à écrire dans les logs
+logger = logging.getLogger()
+
 # url:
 # http://stackoverflow.com/questions/110362/how-can-i-find-the-current-os-in-python
 settings = {
@@ -24,7 +31,12 @@ settings = {
     'Windows-7-6.1.7601-SP1': {
         'search_dir_images': u'D:\\__DATAS__\\__DEV__\\OSGEO4W\\2016-07-18_LI3DS_Nexus5_Synch_BatU\\img',
         'search_pattern_images': u'*.jpg',
+    },
+    'Linux-3.19.0-32-generic-x86_64-with-LinuxMint-17.3-rosa': {
+        'search_dir_images': u'/home/latty/__DEV__/2016_ENSG_PYTHON_COURS/data-2016-07-18_LI3DS_Nexus5_Synch_BatU/img',
+        'search_pattern_images': u'*.jpg',
     }
+
 }
 s = settings[platform.platform()]
 
@@ -41,6 +53,17 @@ def bi_contains(lst, item):
     # item is in the list then it has to be at index bisect_left(lst, item)
     return (item <= lst[-1]) and (lst[bisect_left(lst, item)] == item)
 
+def bi_contains_2(lst, item):
+    """ efficient `~ lst.index(item)` for sorted lists """
+    # if item is larger than the last its not in the list, but the bisect would
+    # find `len(lst)` as the index to insert, so check that first. Else, if the
+    # item is in the list then it has to be at index bisect_left(lst, item)
+    found = False
+    id_item = 0
+    if item <= lst[-1]:
+        id_item = bisect_left(lst, item)
+        found = (lst[id_item] == item)
+    return found, id_item
 
 def build_img_dict(id_img, img_dir, tup_qgis_layer_featureid, position):
     return {
@@ -91,7 +114,7 @@ def init_label_with_img(id_img, label=None):
         # http://stackoverflow.com/questions/1278705/python-when-i-catch-an-exception-how-do-i-get-the-type-file-and-line-number
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-        print(exc_type, fname, exc_tb.tb_lineno)
+        logger.error("{}, {}, {}".format(exc_type, fname, exc_tb.tb_lineno))
     #
     return label
 
@@ -114,7 +137,6 @@ def get_vector_layers_with_fields_v1a(layers, list_fields):
         list_layers_found.append(
             (layer, all([field in fields_names for field in list_fields])))
     #
-
     def _func_tup(_tup):
         return tup[1]
     return filter(_func_tup, list_layers_found)
@@ -162,7 +184,7 @@ def get_vector_layers_with_fields_v2b(layers, list_fields):
     )
 
 
-def get_random_key(d):
+def get_random_key(dict_imgs):
     """
         Renvoie une clee aleatoire du dictionnaire 'd'
     """
@@ -172,10 +194,11 @@ def get_random_key(d):
 
 def create_label_with_random_img(dict_imgs, label=QLabel()):
     # tup_qgis = (None, None)
-    label = None
+    # label = None
+    id_img = None
     try:
         id_img = get_random_key(dict_imgs)
-        dict_img = dict_imgs[id_img]
+        # dict_img = dict_imgs[id_img]
 
         # -----
         # Notes
@@ -191,7 +214,7 @@ def create_label_with_random_img(dict_imgs, label=QLabel()):
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-        print(exc_type, fname, exc_tb.tb_lineno)
+        logger.error("{}, {}, {}".format(exc_type, fname, exc_tb.tb_lineno))
 
     # return label, tup_qgis, id_img
     return label, id_img
@@ -221,12 +244,15 @@ def select_feature_on_layer(
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-        print(exc_type, fname, exc_tb.tb_lineno)
+        logger.error("{}, {}, {}".format(exc_type, fname, exc_tb.tb_lineno))
     else:
-        print("Feature selected: %d" % (featureid_selected))
+        logger.info("Feature selected: {}".format(featureid_selected))
 
 
-def build_imgs_dict(layers_compatibles):
+def build_imgs_dict(layers_compatibles, list_img_basename):
+    # logger.info("layer_compatibles: {}".format(layers_compatibles))
+    # logger.info("list_img_basename: {}".format(list_img_basename))
+
     dict_imgs = {}
     # Pour chaque layer compatible
     for layer in layers_compatibles:
@@ -238,12 +264,19 @@ def build_imgs_dict(layers_compatibles):
             attrs = feature.attributes()
             # On recupere l'id de l'image (basename)
             id_img = attrs[0]
+            # logger.info("id de l'image: {}".format(id_img))
             # On recherche cette id dans notre base d'images
-            # (trouvees/disponibles)
-            if bi_contains(list_img_basename, id_img):
+            # (trouvees/disponibles)v
+            # if id_img in list_img_basename:
+            # if bi_contains(list_img_basename, id_img):
+            bc_found_img, bc_id_img = bi_contains_2(list_img_basename, id_img)
+            if bc_found_img:
+                # logger.info("On a trouve une correspondance d'image !")
                 # On recupere l'indice de correspondance de l'image dans notre
                 # base
-                id_img_in_list = bisect_left(list_img_basename, id_img)
+                # id_img_in_list = bisect_left(list_img_basename, id_img)
+                # id_img_in_list = list_img_basename.index(id_img)
+                id_img_in_list = bc_id_img
                 # On peut extraire son path
                 dir_path_img = list_img_dirs[id_img_in_list]
                 # fullpath_to_img = os.path.join(dir_path_img, id_img)
@@ -257,8 +290,7 @@ def build_imgs_dict(layers_compatibles):
                 # fetch geometry
                 geom = feature.geometry()
                 # show some information about the feature
-                position = geom.asPoint() if geom.type() == QGis.Point else QgsPoint(
-                    0, 0)
+                position = geom.asPoint() if geom.type() == QGis.Point else QgsPoint(0, 0)
 
                 # On met a jour le dictionnaire des images
                 dict_imgs.update(
@@ -273,7 +305,10 @@ def build_imgs_dict(layers_compatibles):
 
 
 def search_images(search_dir_images, search_pattern_images=u'*.jpg'):
-    list_img_dirs, list_img_basename = [], []
+    """
+    Renvoie de listes tuples (immutables)
+    """
+    list_img_dirs, list_img_basename = (), ()
     try:
         # search images files
         search_path_for_img = os.path.join(
@@ -284,10 +319,9 @@ def search_images(search_dir_images, search_pattern_images=u'*.jpg'):
               ]
         )
     except:
-        print("No images found in: %s" % search_path_for_img)
+        logger.warning("No images found in: {}".format(search_path_for_img))
     else:
-        print("%d images found in: %s" %
-              (len(list_img_dirs), search_path_for_img))
+        logger.info("{} images found in: {}".format(len(list_img_dirs), search_path_for_img))
     return list_img_dirs, list_img_basename
 
 
@@ -307,7 +341,7 @@ def configure_layer_renderer(dict_imgs, id_img, field):
     # layer = qgis.utils.iface.activeLayer()
     layer, featureid_selected = dict_imgs[id_img]['qgis']
 
-    print("id_img: %s" % id_img)
+    logger.info("id_img: {}".format(id_img))
 
     # get unique values
     fni = layer.fieldNameIndex(field)
@@ -385,17 +419,51 @@ def configure_layer_renderer(dict_imgs, id_img, field):
     layer.triggerRepaint()
 
 
+def init_logger(_logger=logger, _filename='activity.log'):
+    # on met le niveau du logger à DEBUG, comme ça il écrit tout
+    _logger.setLevel(logging.DEBUG)
+
+    # création d'un formateur qui va ajouter le temps, le niveau
+    # de chaque message quand on écrira un message dans le log
+    formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
+
+    # création d'un handler qui va rediriger une écriture du log vers
+    # un fichier en mode 'append', avec 1 backup et une taille max de 1Mo
+    file_handler = RotatingFileHandler(_filename, 'a', 1000000, 1)
+
+    # on lui met le niveau sur DEBUG, on lui dit qu'il doit utiliser le formateur
+    # créé précédement et on ajoute ce handler au logger
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(formatter)
+    _logger.addHandler(file_handler)
+
+    # création d'un second handler qui va rediriger chaque écriture de log
+    # sur la console
+    steam_handler = logging.StreamHandler()
+    steam_handler.setLevel(logging.DEBUG)
+    _logger.addHandler(steam_handler)
+
+
 #############
 ### MAIN ####
 #############
 if __name__ == '__main__' or __name__ == '__console__':
+    # init logging/logger
+    init_logger(logger)
+
     # local settings
     list_img_dirs, list_img_basename = search_images(
         # search_dir_images="/media/atty/WIN7_INST_DATAS/__DATAS__/__DEV__/OSGEO4W/2016-07-18_LI3DS_Nexus5_Synch_BatU/img"
         search_dir_images=s['search_dir_images'],
         search_pattern_images=s['search_pattern_images'],
     )
-
+    # il faut etre sure que les listes sont triees si on souhaite
+    # utiliser les outils de recherche dichotomique (bisect_left, bi_contain, etc ...)
+    list_img_dirs = list(list_img_dirs)
+    list_img_dirs.sort()
+    list_img_basename = list(list_img_basename)
+    list_img_basename.sort()
+    #
     # On recupere tous les layers QGIS disponibles
     layers = iface.mapCanvas().layers()
     # 1er filtre: on ne s'interesse qu'aux VectorLayers
@@ -408,17 +476,19 @@ if __name__ == '__main__' or __name__ == '__console__':
     layers_compatibles = get_vector_layers_with_fields_v2a(
         layers, [u'id', u'position'])
     # Layers (potentiellement) compatibles
-    print("layers_compatibles: %s" % (layers_compatibles))
+    logger.info("layers_compatibles: {}".format(layers_compatibles))
     #
-    dict_imgs = build_imgs_dict(layers_compatibles)
+    dict_imgs = build_imgs_dict(layers_compatibles, list_img_basename)
+    logger.info("dict_imgs: {}".format(len(dict_imgs)))
 
     id_img = show_random_img_in_label(dict_imgs)
     layer_selected, feature_selected = dict_imgs[id_img]['qgis']
     select_feature_on_layer(layer_selected, feature_selected)
 
-    print("Nb images synch with QGIS: %d" % (len(dict_imgs)))
+    logger.info("Nb images synch with QGIS: {}".format(len(dict_imgs)))
 
     configure_layer_renderer(dict_imgs, id_img, 'id')
 else:
-    print("__name__: %s" % __name__)
+    logger.warning("__name__: {}".format(__name__))
+
 #############
