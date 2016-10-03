@@ -9,13 +9,13 @@ import sys
 osgeo4w_root = r'D:\__DATAS__\__DEV__\OSGEO4W\OSGeo4W64'
 
 # os.environ['PATH'] = '{}/bin{}{}'.format(osgeo4w_root, os.pathsep, os.environ['PATH'])
-# sys.path.insert(0, '{}/apps/qgis/python'.format(osgeo4w_root))
+# sys.path.insert(0, '{}/apps/plugin_qgis/python'.format(osgeo4w_root))
 # sys.path.insert(1, '{}/apps/python27/lib/site-packages'.format(osgeo4w_root))
 # sys.path.insert(2, 'C:/Users/Abdias/.qgis2/python/plugins')
 
 # import PyQGIS
-from qgis.core import QgsApplication, QgsVectorLayer, QgsMapLayerRegistry, QgsProviderRegistry
-from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
+from plugin_qgis.core import QgsApplication, QgsVectorLayer, QgsMapLayerRegistry, QgsProviderRegistry
+from plugin_qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
 #
 # import Qt
 from PyQt4 import QtCore, QtGui, QtTest
@@ -34,15 +34,16 @@ def setUpModule():
     """
 
     """
-    # load qgis providers
-    # QgsApplication.setPrefixPath('{}/apps/qgis'.format(osgeo4w_root), True)
+    # load plugin_qgis providers
+    # QgsApplication.setPrefixPath('{}/apps/plugin_qgis'.format(osgeo4w_root), True)
     QgsApplication([], False).initQgis()
 
     if len(QgsProviderRegistry.instance().providerList()) == 0:
         raise RuntimeError('No data providers available.')
 
 
-# dummy instance to replace qgis.utils.iface
+# dummy instance to replace plugin_qgis.utils.iface
+# url: http://gis.stackexchange.com/a/71300
 class QgisInterfaceDummy(object):
     """
 

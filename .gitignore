@@ -9,7 +9,7 @@ export
 # Pycharm
 .idea
 *.*~
-*.pyc
+#*.pyc
 #
 python2.7.exe.stackdump
 
