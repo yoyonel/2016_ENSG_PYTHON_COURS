@@ -32,6 +32,11 @@ logger = logging.getLogger()
 
 # url:
 # http://stackoverflow.com/questions/110362/how-can-i-find-the-current-os-in-python
+# ps: c'est surement pas assez discriminant de n'utiliser que l'information de platform
+# peut etre effecuter une fusion avec l'hostname, ip, ou autrechose
+# ps2: a noter qu'on passe maintenant avec un submodule pour les données,
+# du coup on a peut etre un acces relatif au path des ressources/datas.
+# ps3: faudrait séparer les parties du path (ROOT + relatif PATH)
 dict_settings = {
     'Linux-3.13.0-24-generic-x86_64-with-LinuxMint-17.3-rosa': {
         'search_dir_images': u'/media/atty/WIN7_INST_DATAS/__DATAS__/__DEV__/OSGEO4W/2016-07-18_LI3DS_Nexus5_Synch_BatU/img',
@@ -42,7 +47,7 @@ dict_settings = {
         'search_pattern_images': u'*.jpg',
     },
     'Linux-3.19.0-32-generic-x86_64-with-LinuxMint-17.3-rosa': {
-        'search_dir_images': u'/home/latty/__DEV__/2016_ENSG_PYTHON_COURS/data-2016-07-18_LI3DS_Nexus5_Synch_BatU/img',
+        'search_dir_images': u'/home/latty/link_dir/2016_ENSG_PYTHON_COURS/data-2016-07-18_LI3DS_Nexus5_Synch_BatU/img',
         'search_pattern_images': u'*.jpg',
     }
 }
@@ -82,7 +87,7 @@ def build_img_dict(id_img, img_dir, tup_qgis_layer_featureid, position):
     return {
         id_img: {
             'path': img_dir,
-            'qgis': tup_qgis_layer_featureid,
+            'plugin_qgis': tup_qgis_layer_featureid,
             'position': position
         }
     }
@@ -94,7 +99,7 @@ def get_qgis_from_dict_imgs(id_img):
     :param id_img:
     :return:
     """
-    return dict_imgs[id_img]['qgis']
+    return dict_imgs[id_img]['plugin_qgis']
 
 
 def get_layer_from_dict_imgs(id_img):
@@ -103,7 +108,7 @@ def get_layer_from_dict_imgs(id_img):
     :param id_img:
     :return:
     """
-    return dict_imgs[id_img]['qgis'][0]
+    return dict_imgs[id_img]['plugin_qgis'][0]
 
 
 def get_featureid_from_dict_imgs(id_img):
@@ -112,7 +117,7 @@ def get_featureid_from_dict_imgs(id_img):
     :param id_img:
     :return:
     """
-    return dict_imgs[id_img]['qgis'][1]
+    return dict_imgs[id_img]['plugin_qgis'][1]
 
 
 def get_img_filename(id_img):
@@ -251,14 +256,14 @@ def get_vector_layers_with_fields_v2b(layers, list_fields):
                 (
                     layer,
                     all([
-                            field in map(
-                                QgsField.name, layer.pendingFields())
-                            for field in list_fields
-                            ]
-                        )
+                        field in map(
+                            QgsField.name, layer.pendingFields())
+                        for field in list_fields
+                    ]
+                    )
                 )
                 for layer in layers
-                ]
+            ]
         )
     )
 
@@ -294,8 +299,6 @@ def create_label_with_random_img(dict_imgs, label=QLabel()):
         # au cours de l'execution du plugin (les liens peuvent etre effaces/supprimes, changes, etc ...)
         # Il faudrait retester la validite des informations a chaque
         # utilisation (ou ne plus stocker et effectuer des requetes a la volee)
-        # layer_selected, featureid_selected = get_qgis_from_dict_imgs(id_img)
-        # tup_qgis = layer_selected, featureid_selected = dict_img['qgis']
         #
         label = init_label_with_img(id_img, label)
     except Exception as e:
@@ -455,8 +458,8 @@ def configure_layer_renderer(dict_imgs, id_img, field):
     # - http://gis.stackexchange.com/questions/59682/how-to-set-marker-line-symbol-for-qgsvectorlayer-by-using-python
 
     # Get the active layer (must be a vector layer)
-    # layer = qgis.utils.iface.activeLayer()
-    layer, featureid_selected = dict_imgs[id_img]['qgis']
+    # layer = plugin_qgis.utils.iface.activeLayer()
+    layer, featureid_selected = dict_imgs[id_img]['plugin_qgis']
 
     logger.info("id_img: {}".format(id_img))
 
@@ -604,7 +607,7 @@ if __name__ == '__main__' or __name__ == '__console__':
     logger.info("dict_imgs: {}".format(len(dict_imgs)))
 
     id_img = show_random_img_in_label(dict_imgs)
-    layer_selected, feature_selected = dict_imgs[id_img]['qgis']
+    layer_selected, feature_selected = dict_imgs[id_img]['plugin_qgis']
     select_feature_on_layer(layer_selected, feature_selected)
 
     logger.info("Nb images synch with QGIS: {}".format(len(dict_imgs)))
