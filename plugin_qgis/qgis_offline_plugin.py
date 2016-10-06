@@ -12,7 +12,7 @@ from tool_layer_img import show_random_img_in_label
 from qgis_layer_feature import select_feature_on_layer
 from qgis_layer_renderer import configure_layer_renderer
 from tool_argparse import parse_arguments, print_args
-from tool_search_images import build_list_imgs_dir_basename
+
 import os
 
 
