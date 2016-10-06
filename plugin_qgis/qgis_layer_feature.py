@@ -9,7 +9,8 @@ import os
 
 def select_feature_on_layer(
         _tup_layer_featureid_selected,
-        _map_canvas, _selection_qcolor=QColor("blue")):
+        _map_canvas,
+        _selection_qcolor=QColor("blue")):
     """
 
     :param _layer_selected:

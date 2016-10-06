@@ -3,7 +3,7 @@
 # - http://stackoverflow.com/questions/2701173/most-efficient-way-for-a-lookup-search-in-a-huge-list-python
 # - https://docs.python.org/2/library/bisect.html
 from bisect import bisect_left
-from tool_search_images import list_img_dirs
+# from tool_search_images import list_img_dirs
 from qgis.core import QgsPoint, QGis
 
 
@@ -46,7 +46,7 @@ def build_img_dict(id_img, img_dir, tup_qgis_layer_featureid, position):
     }
 
 
-def build_imgs_dict_0(layers_compatibles, list_img_basename):
+def build_imgs_dict_0(layers_compatibles, list_img_dirs, list_img_basename):
     """
 
     :param layers_compatibles:
@@ -91,7 +91,7 @@ def build_imgs_dict_0(layers_compatibles, list_img_basename):
     return dict_imgs
 
 
-def build_imgs_dict_1(layers_compatibles, list_img_basename):
+def build_imgs_dict_1(layers_compatibles, list_img_dirs, list_img_basename):
     """
 
     :param layers_compatibles:
@@ -135,7 +135,7 @@ def build_imgs_dict_1(layers_compatibles, list_img_basename):
     return dict_imgs
 
 
-def build_imgs_dict_2(layers_compatibles, list_img_basename):
+def build_imgs_dict_2(layers_compatibles, list_img_dirs, list_img_basename):
     """
 
     :param layers_compatibles:

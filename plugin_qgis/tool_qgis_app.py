@@ -4,6 +4,7 @@
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
 from PyQt4 import QtGui
+import PyQt4
 #
 import sys
 
@@ -30,13 +31,13 @@ class QgisApp(object):
         self.qgis_canvas.setCanvasColor(QtGui.QColor('white'))
         self.qgis_canvas.enableAntiAliasing(True)
 
-    def load_vectorlayer(self, _shp_filename=""):
+    def load_vectorlayer(self, _shp_fullpath=""):
         """
 
         :param _shp_filename:
         :return:
         """
-        return QgsVectorLayer(_shp_filename, 'MasterMap', 'ogr')
+        return QgsVectorLayer(_shp_fullpath, 'MasterMap', 'ogr')
 
     def add_vectorlayer_to_canvas(self, _vl):
         """
