@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import shapefile
 import argparse
-import sys
 import numpy as np
 from math import *
 
@@ -278,7 +277,7 @@ def write_OPK_to_shp_file(
         write_viewdir_shp_from_arr_ori(arr_oris, export_filename + "_view_dir", viewdir_length_proj)
 
 
-def parse_arguments(_):
+def parse_arguments():
     """
 
     :param _:
@@ -375,7 +374,7 @@ def init_log():
     logger.addHandler(steam_handler)
 
 
-def main(argv):
+def main():
     """
 
     :param argv:
@@ -383,7 +382,7 @@ def main(argv):
     """
     init_log()
 
-    args = parse_arguments(argv)
+    args = parse_arguments()
     print_args(args)
 
     # url: http://stackoverflow.com/questions/713794/catching-an-exception-while-using-a-python-with-statement
@@ -397,4 +396,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()

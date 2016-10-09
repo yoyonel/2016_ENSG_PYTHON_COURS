@@ -121,7 +121,7 @@ def create_label_with_random_img(dict_imgs):
     return label, id_img
 
 
-def show_random_img_in_label(dict_imgs):
+def set_random_img_in_label(dict_imgs):
     """
 
     :param dict_imgs:
@@ -129,5 +129,4 @@ def show_random_img_in_label(dict_imgs):
     """
     label, id_img = create_label_with_random_img(dict_imgs)
     logger.info("label: {}".format(label))
-    # label.show()
     return label, id_img
