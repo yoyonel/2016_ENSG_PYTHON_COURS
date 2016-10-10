@@ -14,15 +14,17 @@ from qgis_layer_filters import get_compatibles_layers
 from tool_build_img_dict import build_imgs_dict
 from tool_layer_img import set_random_img_in_label
 from qgis_layer_feature import select_feature_on_layer
-from qgis_layer_renderer import configure_layer_renderer, configure_layer_renderer_2
+from qgis_layer_renderer import configure_layer_renderer, get_qstring_random_color
 from tool_search_images import build_list_imgs_dir_basename
 import os
 #
-from tool_layer_img import init_label_with_img
-
+from tool_layer_img import init_label_with_img, get_random_key
+#
+from collections import defaultdict
 
 # urls:
 # - saghul/pyqt_opencv.py: https://gist.github.com/saghul/1055161
+
 
 class QgisApp(QWidget):
     def __init__(self):
@@ -41,31 +43,56 @@ class QgisApp(QWidget):
         #
         self._init_mapcanvas()
         #
-        # Paint every 200 ms
+        # Timer pour l'animation
         self._timer = QTimer(self)
-        self._timer.timeout.connect(self.changeId)
+        # self._timer.timeout.connect(self.changeId_random)
+        self._timer.timeout.connect(self.changeId_inc)
         #
         self.vector_layer = None
         self.label = None
         self.id_img = None
         self.dict_imgs = {}
-        self.map_id_color = {}
+        self.keys_dict_imgs = []
+        # TODO: write a doc/commentaries about this defaultdict (idea, usage, ...)
+        self.map_id_color = defaultdict(lambda: get_qstring_random_color())
 
     def startAnimation(self, period=200):
+        """
+
+        :param period:
+        :return:
+        """
         self._timer.start(period)
 
-    def changeId(self):
-        # last_id_img = self.id_img
-        l_keys = self.dict_imgs.keys()
-        l_keys.sort()
-        self.id_img = l_keys[(l_keys.index(self.id_img) + 1) % len(l_keys)]
-        # self.id_img = get_random_key(self.dict_imgs)
+    def changeId(self, _id):
+        """
+
+        :param _id:
+        :return:
+        """
+        self.id_img = _id
 
         init_label_with_img(self.label, self.dict_imgs[self.id_img], self.id_img)
         select_feature_on_layer(self.dict_imgs[self.id_img]['plugin_qgis'], self.qgis_canvas)
-        configure_layer_renderer_2(self.dict_imgs, self.id_img, 'id', self.map_id_color)
+        configure_layer_renderer(self.dict_imgs, self.id_img, 'id', self.map_id_color)
 
         logger.debug("Change id: {}".format(self.id_img))
+
+    def changeId_random(self):
+        """
+
+        :return:
+        """
+        self.changeId(get_random_key(self.dict_imgs))
+
+    def changeId_inc(self):
+        """
+
+        :return:
+        """
+        l_keys = self.keys_dict_imgs
+        next_id_in_list = (l_keys.index(self.id_img) + 1) % len(l_keys)
+        self.changeId(l_keys[next_id_in_list])
 
     def _init_mapcanvas(self):
         """
@@ -132,6 +159,8 @@ class QgisApp(QWidget):
             )
             #
             dict_imgs = self.dict_imgs = build_imgs_dict(layers_compatibles, list_img_dirs, list_img_basename)
+            self.keys_dict_imgs = dict_imgs.keys()
+            self.keys_dict_imgs.sort()
             logger.debug("dict_imgs: {}".format(len(dict_imgs)))
             #
             if dict_imgs:
@@ -140,7 +169,7 @@ class QgisApp(QWidget):
                 #
                 select_feature_on_layer(dict_imgs[self.id_img]['plugin_qgis'], self.qgis_canvas)
                 #
-                self.map_id_color = configure_layer_renderer(dict_imgs, self.id_img, 'id')
+                configure_layer_renderer(dict_imgs, self.id_img, 'id', self.map_id_color)
                 #
                 self.show()
                 self.label.show()

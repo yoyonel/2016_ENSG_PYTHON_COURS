@@ -25,14 +25,11 @@ def main(argv):
     """
     # init logging/logger
     init_logger(logger)
-
     # Parsing des arguments transmis au script
     args = parse_arguments(argv)
     print_args(args)
-
     #
     init_qgis()
-
     #
     app = QgisApp()
     app.init_qt_canvas()

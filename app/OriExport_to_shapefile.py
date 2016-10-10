@@ -37,14 +37,10 @@ from logging.handlers import RotatingFileHandler
 # - http://pygis.blogspot.fr/2012/10/pyshp-attribute-types-and-point-files.html
 # - http://gis.stackexchange.com/questions/85448/python-how-to-create-a-polygon-shapefile-from-a-list-of-x-y-coordinates
 
-
-# TODO: Versionner le projet [URGENT]
-#
 # TODO: doc -> ecrire la doc. (reellement) pour les methodes/fonctions
 # TODO: doc -> generer la doc par sphinx (ou doxygen)
 # TODO: exceptions -> relever plus d'exceptions et les gerer
 # TODO: exceptions -> creer des exceptions customs pour ce projet/script
-
 
 # création de l'objet logger qui va nous servir à écrire dans les logs
 logger = logging.getLogger()
