@@ -57,16 +57,16 @@ def _parse_tabline_from_orifile(tab, x0=0, y0=0, z0=0):
 
     >>> _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522', '-40.654833', '-172.350586', \
                                     '657739.197431', '6860690.284637', '53.534337'])
-    {'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, 'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
+    {'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}
     """
     md = dict()
 
     # Identifiant
     md["id"] = tab[0]  # nom du fichier image
     # Orientation
-    md["heading"] = float(tab[1])
-    md["roll"] = float(tab[2])
-    md["pitch"] = float(tab[3])
+    md["roll"] = float(tab[1])
+    md["pitch"] = float(tab[2])
+    md["yaw"] = float(tab[3])
     # Position
     md["easting"] = float(tab[4]) + x0
     md["northing"] = float(tab[5]) + y0
@@ -101,7 +101,7 @@ def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
     >>> output = StringIO.StringIO('''IMG_1468832894.185000000.jpg -75.622522 -40.654833 -172.350586 \
                                     657739.197431 6860690.284637 53.534337''')
     >>> export_ori_fileobject_to_OmegaPhiKhapa(output)
-    [{'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, 'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
+    [{'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}]
     >>> output.close()
     """
     try:
@@ -112,17 +112,64 @@ def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
         return []
 
 
-def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
+def build_rotationmatrix_from_euler_micmac(roll, pitch, yaw, print_debug=False):
     """
 
     :param heading:
     :param roll:
     :param pitch:
     :param print_debug:
-    
     :return:
 
-    >>> mat_computed = build_rotationmatrix_from_euler_(pitch=0, heading=0, roll=0)
+    Doc MicMac: docmicmac-2.pdf
+    -----------------------------------------------------
+    13.3.4 Exporting external oriention to Omega-Phi-Kapa
+    -----------------------------------------------------
+    Matrix R gives rotation terms to compute parameters in matrix encoding with respect to Omega-Phi-
+    Kappa angles given by the tool OriExport:
+        |cos(φ)∗cos(κ)   cos(φ)∗sin(κ)   −sin(φ)                                                |
+    R = |cos(ω)∗sin(κ)+sin(ω)∗sin(φ)∗cos(κ)  −cos(ω)∗cos(κ)+sin(ω)∗sin(φ)∗sin(κ) sin(ω)∗cos(φ)  |
+        |sin(ω)∗sin(κ)−cos(ω)∗sin(φ)∗cos(κ)  −sin(ω)∗cos(κ)−cos(ω)∗sin(φ)∗sin(κ) −cos(ω)∗cos(φ) |
+
+    - roulis (roll)     ω - omega   - par rapport à l'axe X
+    - tangage (pitch)   φ - phi     - par rapport à l'axe Y
+    - lacet (yaw)       κ - kappa   - par rapport à l'axe Z
+
+    >>> mat_computed = build_rotationmatrix_from_euler_micmac(roll=radians(-5.819826), pitch=radians(-7.058795), yaw=radians(-12.262634))
+    >>> mat_expected = numpy.array( \
+            [[   0.969777798578237427, -0.210783330505758815,   0.122887790140630643,   0.        ],    \
+            [   -0.199121821850641506, -0.974794184828703614,  -0.100631989382226852,   0.        ],    \
+            [   0.141001849092942777,   0.0731210284736428379, -0.987305319416100224,   0.        ],    \
+            [   0.,                     0.,                     0.,                     1.        ]])
+    >>> numpy.allclose(mat_computed, mat_expected)
+    True
+
+    """
+    cos_omega = cos(roll)
+    sin_omega = sin(roll)
+    cos_phi = cos(pitch)
+    sin_phi = sin(pitch)
+    cos_kappa = cos(yaw)
+    sin_kappa = sin(yaw)
+
+    return numpy.array([
+        [cos_phi*cos_kappa, cos_phi*sin_kappa, -sin_phi, 0.],
+        [cos_omega*sin_kappa+sin_omega*sin_phi*cos_kappa, -cos_omega*cos_kappa+sin_omega*sin_phi*sin_kappa, sin_omega*cos_phi, 0.],
+        [sin_omega*sin_kappa-cos_omega*sin_phi*cos_kappa, -sin_omega*cos_kappa-cos_omega*sin_phi*sin_kappa, -cos_omega*cos_phi, 0.],
+        [0., 0., 0., 1.]
+    ])
+
+
+def build_rotationmatrix_from_euler_(roll, pitch, yaw, print_debug=False):
+    """
+
+    :param roll:
+    :param pitch:
+    :param yaw:
+    :param print_debug:
+    :return:
+
+    >>> mat_computed = build_rotationmatrix_from_euler_(roll=0, pitch=0, yaw=0)
     >>> mat_expected = numpy.array( \
             [[ 1., 0.,  0.,  0.],  \
             [ 0.,  1.,  0.,  0.],   \
@@ -131,7 +178,7 @@ def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
     >>> numpy.allclose(mat_computed, mat_expected)
     True
 
-    >>> mat_computed = build_rotationmatrix_from_euler_(pitch=-172.350586, heading=-75.622522, roll=-40.654833)
+    >>> mat_computed = build_rotationmatrix_from_euler_(roll=-40.654833, pitch=-172.350586, yaw=-75.622522)
     >>> mat_expected = numpy.array( \
             [[ 0.90781218, -0.18017385, -0.37870098,  0.        ],  \
             [-0.07492065, -0.95815745,  0.27626291,  0.        ],   \
@@ -154,7 +201,7 @@ def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
     #
     # version concatenee de la construction de matrice de rotation
     # a partir d'informations d'orientation (euler)
-    matrix_rot = transformations.euler_matrix(-pitch, heading, -roll, axes='syxz')
+    matrix_rot = transformations.euler_matrix(-pitch, yaw, -roll, axes='syxz')
 
     if print_debug:
         logger.info("ROS - matrix_rot (from Quaternion)\n%s", matrix_rot)
@@ -162,25 +209,24 @@ def build_rotationmatrix_from_euler_(heading, roll, pitch, print_debug=False):
     return matrix_rot
 
 
-def extract_and_convert_heading_roll_pitch_from_dict_ori(dict_ori):
+def extract_and_convert_roll_pitch_yaw_from_dict_ori(dict_ori):
     """
 
     :param dict_ori:
     :return:
 
     >>> dict_ori = {'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, \
-                    'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
-    >>> extract_and_convert_heading_roll_pitch_from_dict_ori(dict_ori)
-    (-1.3198619975618473, -0.7095606926984439, -3.0080851934416435)
+                    'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
+    >>> extract_and_convert_roll_pitch_yaw_from_dict_ori(dict_ori)
+    (-0.7095606926984439, -3.0080851934416435, -1.3198619975618473)
     """
     # extract
-    heading, roll, pitch = dict_ori["heading"], dict_ori["roll"], dict_ori["pitch"]
+    roll, pitch, yaw = dict_ori["roll"], dict_ori["pitch"], dict_ori["yaw"]
     # convert (degree -> radian)
-    heading = radians(heading)
     roll = radians(roll)
     pitch = radians(pitch)
-    # yaw = heading
-    return heading, roll, pitch
+    yaw = radians(yaw)
+    return roll, pitch, yaw
 
 
 def extract_center_dict_ori(dict_ori):
@@ -191,7 +237,7 @@ def extract_center_dict_ori(dict_ori):
 
     >>> dict_ori = {'id': 'IMG_1468832894.185000000.jpg', \
                     'altitude': 53.534337, 'easting': 657739.197431, 'northing': 6860690.284637, \
-                    'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833}
+                    'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833}
     >>> extract_center_dict_ori(dict_ori)
     [657739.197431, 6860690.284637, 53.534337, 1]
     """
@@ -220,9 +266,10 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
         # on extrait le centre de la prise de vue
         center = extract_center_dict_ori(ori)
         # on extrait les informations d'orientation
-        heading, roll, pitch = extract_and_convert_heading_roll_pitch_from_dict_ori(ori)
+        roll, pitch, yaw = extract_and_convert_roll_pitch_yaw_from_dict_ori(ori)
         # on calcule la matrix de rotation a partir de ces informations d'orientation
-        matrix_rot = build_rotationmatrix_from_euler_(heading, roll, pitch)
+        # matrix_rot = build_rotationmatrix_from_euler_(roll, pitch, yaw)
+        matrix_rot = build_rotationmatrix_from_euler_micmac(roll, pitch, yaw)
         # url: http://docs.scipy.org/doc/numpy/reference/generated/numpy.multiply.html
         view_vec = np.multiply(zaxis, viewdir_length_proj)
         # on calcule le vecteur de vue
@@ -276,7 +323,6 @@ def write_OPK_to_shp_file(
 def parse_arguments():
     """
 
-    :param _:
     :return:
     """
     parser = argparse.ArgumentParser()
