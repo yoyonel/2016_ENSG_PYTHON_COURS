@@ -14,12 +14,11 @@ osgeo4w_root = r'D:\__DATAS__\__DEV__\OSGEO4W\OSGeo4W64'
 # sys.path.insert(2, 'C:/Users/Abdias/.qgis2/python/plugins')
 
 # import PyQGIS
-from plugin_qgis.core import QgsApplication, QgsVectorLayer, QgsMapLayerRegistry, QgsProviderRegistry
-from plugin_qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
+from qgis.core import QgsApplication, QgsVectorLayer, QgsMapLayerRegistry, QgsProviderRegistry
+from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
 #
 # import Qt
-from PyQt4 import QtCore, QtGui, QtTest
-from PyQt4.QtCore import Qt
+from PyQt4 import QtGui
 
 #
 # import plugin_test

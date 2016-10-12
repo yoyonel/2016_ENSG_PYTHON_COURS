@@ -11,25 +11,11 @@ import numpy
 # for doctest
 # url: http://python-future.org/compatible_idioms.html
 try:
-    # from StringIO import StringIO
     import StringIO
 except ImportError:
     from io import StringIO  # for handling unicode strings
 
-try:
-    # from transformations import euler_matrix
-    import transformations
-except ImportError:
-    import sys
-    import os
-
-    PACKAGE_PARENT = '..'
-    SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
-    sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
-    import transformations
-
 import logging
-
 from logging.handlers import RotatingFileHandler
 
 # urls:
@@ -88,7 +74,7 @@ def _convert_line_to_tab_from_orifile(line):
     return line.split()
 
 
-def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
+def export_oriexportfileobject_to_oriarray(fo_oriexport, x0=0, y0=0, z0=0):
     """
 
     :param fo_oriexport:
@@ -100,25 +86,24 @@ def export_ori_fileobject_to_OmegaPhiKhapa(fo_oriexport, x0=0, y0=0, z0=0):
     url: https://docs.python.org/2/library/stringio.html
     >>> output = StringIO.StringIO('''IMG_1468832894.185000000.jpg -75.622522 -40.654833 -172.350586 \
                                     657739.197431 6860690.284637 53.534337''')
-    >>> export_ori_fileobject_to_OmegaPhiKhapa(output)
+    >>> export_oriexportfileobject_to_oriarray(output)
     [{'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}]
     >>> output.close()
     """
     try:
-        return [_parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0) for line in
-                fo_oriexport]
+        return [_parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0)
+                for line in fo_oriexport]
     except Exception as err:
         logger.error("Exception: " % err)
         return []
 
 
-def build_rotationmatrix_from_euler_micmac(roll, pitch, yaw, print_debug=False):
+def build_rotationmatrix_from_micmac(roll, pitch, yaw):
     """
 
     :param heading:
     :param roll:
     :param pitch:
-    :param print_debug:
     :return:
 
     Doc MicMac: docmicmac-2.pdf
@@ -135,7 +120,7 @@ def build_rotationmatrix_from_euler_micmac(roll, pitch, yaw, print_debug=False):
     - tangage (pitch)   φ - phi     - par rapport à l'axe Y
     - lacet (yaw)       κ - kappa   - par rapport à l'axe Z
 
-    >>> mat_computed = build_rotationmatrix_from_euler_micmac(roll=radians(-5.819826), pitch=radians(-7.058795), yaw=radians(-12.262634))
+    >>> mat_computed = build_rotationmatrix_from_micmac(roll=radians(-5.819826), pitch=radians(-7.058795), yaw=radians(-12.262634))
     >>> mat_expected = numpy.array( \
             [[   0.969777798578237427, -0.210783330505758815,   0.122887790140630643,   0.        ],    \
             [   -0.199121821850641506, -0.974794184828703614,  -0.100631989382226852,   0.        ],    \
@@ -160,56 +145,7 @@ def build_rotationmatrix_from_euler_micmac(roll, pitch, yaw, print_debug=False):
     ])
 
 
-def build_rotationmatrix_from_euler_(roll, pitch, yaw, print_debug=False):
-    """
-
-    :param roll:
-    :param pitch:
-    :param yaw:
-    :param print_debug:
-    :return:
-
-    >>> mat_computed = build_rotationmatrix_from_euler_(roll=0, pitch=0, yaw=0)
-    >>> mat_expected = numpy.array( \
-            [[ 1., 0.,  0.,  0.],  \
-            [ 0.,  1.,  0.,  0.],   \
-            [-0.,  0.,  1.,  0.],   \
-            [ 0.,  0.,  0.,  1.]])
-    >>> numpy.allclose(mat_computed, mat_expected)
-    True
-
-    >>> mat_computed = build_rotationmatrix_from_euler_(roll=-40.654833, pitch=-172.350586, yaw=-75.622522)
-    >>> mat_expected = numpy.array( \
-            [[ 0.90781218, -0.18017385, -0.37870098,  0.        ],  \
-            [-0.07492065, -0.95815745,  0.27626291,  0.        ],   \
-            [-0.41263052, -0.22242231, -0.88332575,  0.        ],   \
-            [ 0.        ,  0.        ,  0.        ,  1.        ]])
-    >>> numpy.allclose(mat_computed, mat_expected)
-    True
-    """
-    # urls:
-    # - https://github.com/ros/geometry/blob/hydro-devel/transformations/src/transformations/transformations.py
-    # - http://answers.ros.org/question/69754/quaternion-transformations-in-python/
-    # - https://github.com/iTowns/itowns/blob/master/src/Ori.js
-    # construction recuperee depuis itowns (Mathieu B.):
-    #   // With quaternion  //set rotation.order to "YXZ", which is equivalent to "heading, pitch, and roll"
-    #   var q = new THREE.Quaternion().setFromEuler(new THREE.Euler(-pitch,heading,-roll,'YXZ'),true);
-
-    #
-    # quaternion = transformations.quaternion_from_euler(-pitch, heading, -roll, axes='syxz')
-    # matrix_rot = transformations.quaternion_matrix(quaternion)
-    #
-    # version concatenee de la construction de matrice de rotation
-    # a partir d'informations d'orientation (euler)
-    matrix_rot = transformations.euler_matrix(-pitch, yaw, -roll, axes='syxz')
-
-    if print_debug:
-        logger.info("ROS - matrix_rot (from Quaternion)\n%s", matrix_rot)
-
-    return matrix_rot
-
-
-def extract_and_convert_roll_pitch_yaw_from_dict_ori(dict_ori):
+def extract_and_convert_rollpitchyaw_from_dictori(dict_ori):
     """
 
     :param dict_ori:
@@ -217,7 +153,7 @@ def extract_and_convert_roll_pitch_yaw_from_dict_ori(dict_ori):
 
     >>> dict_ori = {'altitude': 53.534337, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 657739.197431, \
                     'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}
-    >>> extract_and_convert_roll_pitch_yaw_from_dict_ori(dict_ori)
+    >>> extract_and_convert_rollpitchyaw_from_dictori(dict_ori)
     (-0.7095606926984439, -3.0080851934416435, -1.3198619975618473)
     """
     # extract
@@ -229,7 +165,7 @@ def extract_and_convert_roll_pitch_yaw_from_dict_ori(dict_ori):
     return roll, pitch, yaw
 
 
-def extract_center_dict_ori(dict_ori):
+def extract_center_from_dictori(dict_ori):
     """
 
     :param dict_ori:
@@ -238,13 +174,13 @@ def extract_center_dict_ori(dict_ori):
     >>> dict_ori = {'id': 'IMG_1468832894.185000000.jpg', \
                     'altitude': 53.534337, 'easting': 657739.197431, 'northing': 6860690.284637, \
                     'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833}
-    >>> extract_center_dict_ori(dict_ori)
+    >>> extract_center_from_dictori(dict_ori)
     [657739.197431, 6860690.284637, 53.534337, 1]
     """
     return [dict_ori["easting"], dict_ori["northing"], dict_ori["altitude"], 1]
 
 
-def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_proj=1.0):
+def write_shp_viewdir_from_arrori(arr_oris, export_filename, viewdir_length_proj=1.0):
     """
 
     :param arr_oris:
@@ -264,12 +200,12 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
     # with its own dbf record
     for _, ori in enumerate(arr_oris):
         # on extrait le centre de la prise de vue
-        center = extract_center_dict_ori(ori)
+        center = extract_center_from_dictori(ori)
         # on extrait les informations d'orientation
-        roll, pitch, yaw = extract_and_convert_roll_pitch_yaw_from_dict_ori(ori)
+        roll, pitch, yaw = extract_and_convert_rollpitchyaw_from_dictori(ori)
         # on calcule la matrix de rotation a partir de ces informations d'orientation
         # matrix_rot = build_rotationmatrix_from_euler_(roll, pitch, yaw)
-        matrix_rot = build_rotationmatrix_from_euler_micmac(roll, pitch, yaw)
+        matrix_rot = build_rotationmatrix_from_micmac(roll, pitch, yaw)
         # url: http://docs.scipy.org/doc/numpy/reference/generated/numpy.multiply.html
         view_vec = np.multiply(zaxis, viewdir_length_proj)
         # on calcule le vecteur de vue
@@ -285,11 +221,9 @@ def write_viewdir_shp_from_arr_ori(arr_oris, export_filename, viewdir_length_pro
     logger.info("Export file: %s", export_filename)
 
 
-def write_OPK_to_shp_file(
+def write_shp_idpositions_from_arrori(
         arr_oris,
         export_filename,
-        b_export_view_dir=False,
-        viewdir_length_proj=1.0,
         field_0_name="id",
         field_1_name="position"
 ):
@@ -297,8 +231,6 @@ def write_OPK_to_shp_file(
 
     :param arr_oris:
     :param export_filename:
-    :param b_export_view_dir:
-    :param viewdir_length_proj:
     :param field_0_name: len(field_0_name) < 11
     :type field_1_name: len(field_1_name) < 11
     :return:
@@ -315,9 +247,6 @@ def write_OPK_to_shp_file(
     #
     logger.info("Export file: %s", export_filename)
     w.save(export_filename)
-
-    if b_export_view_dir:
-        write_viewdir_shp_from_arr_ori(arr_oris, export_filename + "_view_dir", viewdir_length_proj)
 
 
 def parse_arguments():
@@ -430,9 +359,11 @@ def main():
     # url: http://stackoverflow.com/questions/713794/catching-an-exception-while-using-a-python-with-statement
     try:
         with open(args.ori, 'r') as fo_exportori:
-            arr_oris = export_ori_fileobject_to_OmegaPhiKhapa(fo_exportori, args.pivot[0], args.pivot[1], args.pivot[2])
+            arr_oris = export_oriexportfileobject_to_oriarray(fo_exportori, args.pivot[0], args.pivot[1], args.pivot[2])
             if arr_oris:
-                write_OPK_to_shp_file(arr_oris, args.shapefile, args.viewdir, args.viewdir_length_proj)
+                write_shp_idpositions_from_arrori(arr_oris, args.shapefile)
+                if args.viewdir:
+                    write_shp_viewdir_from_arrori(arr_oris, args.shapefile + "_view_dir", args.viewdir_length_proj)
     except IOError as err:
         logger.error('Exception: %s', err)
 

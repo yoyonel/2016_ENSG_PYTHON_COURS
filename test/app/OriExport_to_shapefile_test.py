@@ -1,15 +1,22 @@
-# coding=utf-8
-__author__ = 'YoYo'
-
+# url: http://stackoverflow.com/questions/36318440/python-nosetests-import-file-path-with-multiple-modules-files
+try:
+    from app.OriExport_to_shapefile import write_shp_viewdir_from_arrori
+    from app.OriExport_to_shapefile import write_shp_idpositions_from_arrori, extract_center_from_dictori
+except:
+    import sys
+    sys.path.append("../app")
+    from OriExport_to_shapefile import write_shp_viewdir_from_arrori
+    from OriExport_to_shapefile import write_shp_idpositions_from_arrori, extract_center_from_dictori
+#
 import unittest
-from app.OriExport_to_shapefile import write_viewdir_shp_from_arr_ori
-from app.OriExport_to_shapefile import write_OPK_to_shp_file
-from app.OriExport_to_shapefile import extract_center_dict_ori
 from os.path import exists
 from os import mkdir
 from shutil import rmtree
 import shapefile
 import numpy as np
+
+# coding=utf-8
+__author__ = 'YoYo'
 
 
 class Test_OriExport_to_shapefile(unittest.TestCase):
@@ -57,9 +64,7 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
                      'pitch': -172.350586, 'heading': -75.622522, 'roll': -40.654833, 'northing': 6860690.284637}]
 
         # on export le shapefile a partir des donnees pour le tests
-        write_OPK_to_shp_file(arr_oris,
-                              self.test_shapefile,
-                              b_export_view_dir=False)
+        write_shp_idpositions_from_arrori(arr_oris, self.test_shapefile)
         # on tests si la methode a exporte les fichiers
         # url: http://stackoverflow.com/questions/82831/how-to-check-whether-a-file-exists-using-python
         self.assertTrue(exists(self.test_shapefile))
@@ -77,7 +82,7 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # type == 1 => Shape type=Point
         self.assertEqual(shapes[0].shapeType, 1)
         # on utilise extract_center_dict_ori (qui est doctestee)
-        self._raise_assert_on_np_is_close_all(list_points[0], extract_center_dict_ori(arr_oris[0])[:2])
+        self._raise_assert_on_np_is_close_all(list_points[0], extract_center_from_dictori(arr_oris[0])[:2])
 
     def test_write_viewdir_shp_from_arr_ori(self):
         """
@@ -95,13 +100,13 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
                 'easting': 657739.197431,
                 'altitude': 53.534337,
                 'pitch': -90.0,
-                'heading': 0.0,
+                'yaw': 0.0,
                 'roll': 0.0
             }]
 
-        write_viewdir_shp_from_arr_ori(arr_oris,
-                                       self.test_shapefile,
-                                       viewdir_length_proj=10.0)
+        write_shp_viewdir_from_arrori(arr_oris,
+                                      self.test_shapefile,
+                                      viewdir_length_proj=10.0)
 
         # on tests si la methode a exporte les fichiers
         self.assertTrue(exists(self.test_shapefile))
@@ -120,10 +125,10 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
 
         # On tests les points contenus dans le shapefile
         # point 1: centre de l'ori
-        point1_expected = extract_center_dict_ori(arr_oris[0])[:2]
+        point1_expected = extract_center_from_dictori(arr_oris[0])[:2]
         self._raise_assert_on_np_is_close_all(list_points[0], point1_expected)
         # point 2: centre de l'ori + projection (longueur=10) dans la direction de vue
-        point2_expected = np.add(extract_center_dict_ori(arr_oris[0])[:2], [10.0, 0.0])
+        point2_expected = np.add(extract_center_from_dictori(arr_oris[0])[:2], [10.0, 0.0])
         self._raise_assert_on_np_is_close_all(list_points[1], point2_expected)
 
 
