@@ -92,7 +92,8 @@ def export_oriexportfileobject_to_oriarray(fo_oriexport, x0=0, y0=0, z0=0):
     """
     try:
         return [_parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0)
-                for line in fo_oriexport]
+                for line in fo_oriexport
+                ]
     except Exception as err:
         logger.error("Exception: " % err)
         return []
@@ -254,6 +255,36 @@ def write_shp_idpositions_from_arrori(
     w.save(export_filename)
 
 
+def export_mean_position(mean_position_export, arr_oris):
+    """
+    Calcul la position moyenne des positions de prise de vue.
+    Ca revient à calculer le barycentre des positions de la trajectoire (issue du fichier ORI).
+
+    :param mean_position_export:
+    :param arr_oris:
+    :return:
+    """
+    # On extrait les arrays des coordonnées (x, y, z) du tableau des oris
+    # ps: pas super optimal, car on décompacte (un fichier OriExport) pour compacter (en liste de dict Ori)
+    # pour ensuite décompacter à nouveau en listes/array de vector 1D sur chaque dimension (x, y, z) ...
+    x = np.array([ori['easting'] for ori in arr_oris])
+    y = np.array([ori['northing'] for ori in arr_oris])
+    z = np.array([ori['altitude'] for ori in arr_oris])
+    # On construit la chaine de caractere representant notre position mediane
+    mean_position = [x.mean(), y.mean(), z.mean()]
+    str_mean_position = "{}".format(mean_position)
+    # petit log pour la forme
+    logger.info("mean position: %s", str_mean_position)
+    # On ecrit cette position dans un fichier d'export (mean_position_export)
+    try:
+        with open(mean_position_export, 'w') as fo_exportmeanposition:
+            fo_exportmeanposition.write(str_mean_position)
+    except IOError as err:
+        logger.error('Exception: %s', err)
+    # on retourne la mean position
+    return mean_position
+
+
 def parse_arguments():
     """
 
@@ -298,10 +329,21 @@ def parse_arguments():
     parser.add_argument("-vl", "--viewdir_length_proj", type=float, default=1.0,
                         help="longueur des projections des directions de vue. (default: %(default)s)")
 
+    # option:
+    parser.add_argument("-m", "--mean_position", action='store_true',
+                        help="flag pour exporter la position mean des points de vue. (default: %(default)s)")
+    #
+    parser.add_argument("--mean_position_export", nargs='?', type=str,
+                        help="""nom du fichier (sans extension) pour l'export de la mean position\
+                                (default: nom du fichier transmis par le parametre ori (sans extension)\
+                                 avec suffixe '_meanposition.txt')""")
+
     args = parser.parse_args()
 
     if args.shapefile is None:
         args.shapefile = args.ori[:-4]
+    if args.mean_position_export is None:
+        args.mean_position_export = args.ori[:-4] + '_meanposition.txt'
 
     # # add the prefix for export filenames
     # args.shapefile = args.path_for_export + args.shapefile
@@ -315,12 +357,14 @@ def print_args(args):
     :param args:
     :return:
     """
-    print("- filename ExportOri: ", args.ori)
+    logger.info("- filename ExportOri: %s", args.ori)
     # print("- prefix for export: ", args.prefix_for_export)
-    print("- pivot: ", args.pivot)
-    print("- shapefile: ", args.shapefile)
-    print("- export view dir: ", args.viewdir)
-    print("- export view dir - length proj: ", args.viewdir_length_proj)
+    logger.info("- pivot: %s", args.pivot)
+    logger.info("- shapefile: %s", args.shapefile)
+    logger.info("- export view dir: %s", args.viewdir)
+    logger.info("- export view dir - length proj: %s", args.viewdir_length_proj)
+    logger.info("- export mean position: %s", args.mean_position)
+    logger.info("- export mean position export: %s", args.mean_position_export)
 
 
 def init_log():
@@ -366,6 +410,9 @@ def main():
         with open(args.ori, 'r') as fo_exportori:
             arr_oris = export_oriexportfileobject_to_oriarray(fo_exportori, args.pivot[0], args.pivot[1], args.pivot[2])
             if arr_oris:
+                if args.mean_position:
+                    export_mean_position(args.mean_position_export, arr_oris)
+                #
                 write_shp_idpositions_from_arrori(arr_oris, args.shapefile)
                 if args.viewdir:
                     write_shp_viewdir_from_arrori(arr_oris, args.shapefile + "_view_dir", args.viewdir_length_proj)
