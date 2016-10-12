@@ -1,1 +1,3 @@
-nosetests -v
+#!/bin/bash
+
+nosetests -v $@

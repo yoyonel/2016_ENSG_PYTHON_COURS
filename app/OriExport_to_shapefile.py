@@ -3,7 +3,7 @@
 import shapefile
 import argparse
 import numpy as np
-from math import *
+from math import sin, cos, degrees, radians, atan2
 
 # for doctest
 import numpy
@@ -193,8 +193,11 @@ def write_shp_viewdir_from_arrori(arr_oris, export_filename, viewdir_length_proj
     w = shapefile.Writer(shapeType=13)
     # Create a field called "Name"
     w.field("NAME")
+    # url: http://gis.stackexchange.com/questions/41742/problems-converting-csv-to-shapefile-using-pyshp
+    w.field("ANGLE", "N")
 
     zaxis = [0, 0, 1, 0]
+    yaxis = np.array([0, 1, 0, 0])
 
     # This time write each line separately
     # with its own dbf record
@@ -212,10 +215,12 @@ def write_shp_viewdir_from_arrori(arr_oris, export_filename, viewdir_length_proj
         rot_view_vec = np.dot(matrix_rot, view_vec)
         # on construit la segment de vue
         segment_view = [center, np.add(rot_view_vec, center).tolist()]
-
+        # url: http://stackoverflow.com/questions/21483999/using-atan2-to-find-angle-between-two-vectors
+        angle = degrees(atan2(np.cross(rot_view_vec[0:2], yaxis[0:2]), np.dot(yaxis, rot_view_vec)))
         # print segment_view
         w.poly(parts=[segment_view])
-        w.record("segment_view")
+        #
+        w.record("segment_view", angle)
     # Save
     w.save(export_filename)
     logger.info("Export file: %s", export_filename)
