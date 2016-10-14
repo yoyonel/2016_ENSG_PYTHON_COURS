@@ -44,14 +44,7 @@ def parse_arguments():
     # - http://stackoverflow.com/questions/2058925/how-can-i-break-up-this-long-line-in-python
     parser.add_argument("-s", "--shapefile", nargs='?', type=str,
                         help="""nom du fichier shapefile (sans extension) d'export \
-                        (default: nom du fichier transmis par le parametre ori (sans extension))""")
-
-    # option: prefix pour les exports
-    #
-    # parser.add_argument("--path_for_export", type=str,
-    #                     default="/export/",
-    #                     help="""path pour les exports \
-    #                     (default: %(default)s)""")
+                        (default: nom du fichier transmis par le paramètre ori (sans extension))""")
 
     # option: noms des champs pour l'export shapefile
 
@@ -79,9 +72,6 @@ def parse_arguments():
         args.shapefile = args.ori[:-4]
     if args.mean_position_export is None:
         args.mean_position_export = args.ori[:-4] + '_meanposition.txt'
-
-    # # add the prefix for export filenames
-    # args.shapefile = args.path_for_export + args.shapefile
 
     return args
 
