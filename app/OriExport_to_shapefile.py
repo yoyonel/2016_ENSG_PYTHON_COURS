@@ -5,6 +5,7 @@ import argparse
 from tool_log import logger, init_logger
 from tool_ori import export_oriexportfileobject_to_oriarray, \
     export_meanposition_from_arrori,    \
+    write_affine_transformation_from_arrori,        \
     write_shp_idpositions_from_arrori,  \
     write_shp_viewdir_from_arrori
 
@@ -65,6 +66,15 @@ def parse_arguments():
                         help="""nom du fichier (sans extension) pour l'export de la mean position\
                                 (default: nom du fichier transmis par le parametre ori (sans extension)\
                                  avec suffixe '_meanposition.txt')""")
+    # option:
+    parser.add_argument("--affine_transformation", action='store_true',
+                        help="flag pour exporter les transformations affines (position + rotation) issues des ORIs. \
+                        (default: %(default)s)")
+    #
+    parser.add_argument("--affine_transformation_export", nargs='?', type=str,
+                        help="""nom du fichier (sans extension) pour l'export des transformations affines. \
+                                    (default: nom du fichier transmis par le parametre ori (sans extension)\
+                                     avec suffixe '_affinetransfo.txt')""")
 
     args = parser.parse_args()
 
@@ -72,6 +82,8 @@ def parse_arguments():
         args.shapefile = args.ori[:-4]
     if args.mean_position_export is None:
         args.mean_position_export = args.ori[:-4] + '_meanposition.txt'
+    if args.affine_transformation_export is None:
+        args.affine_transformation_export = args.ori[:-4] + '_affinetransfo.txt'
 
     return args
 
@@ -90,6 +102,8 @@ def print_args(args):
     logger.info("- export view dir - length proj: %s", args.viewdir_length_proj)
     logger.info("- export mean position: %s", args.mean_position)
     logger.info("- export mean position export: %s", args.mean_position_export)
+    logger.info("- export affine transformation: %s", args.affine_transformation)
+    logger.info("- export affine transformation filename: %s", args.affine_transformation_export)
 
 
 def main():
@@ -110,10 +124,16 @@ def main():
             if arr_oris:
                 if args.mean_position:
                     export_meanposition_from_arrori(args.mean_position_export, arr_oris)
+                if args.affine_transformation:
+                    write_affine_transformation_from_arrori(args.affine_transformation_export, arr_oris)
                 #
                 write_shp_idpositions_from_arrori(arr_oris, args.shapefile)
                 if args.viewdir:
-                    write_shp_viewdir_from_arrori(arr_oris, args.shapefile + "_view_dir", args.viewdir_length_proj)
+                    write_shp_viewdir_from_arrori(
+                        args.shapefile + "_view_dir",
+                        arr_oris,
+                        args.viewdir_length_proj
+                    )
     except IOError as err:
         logger.error('Exception: %s', err)
 

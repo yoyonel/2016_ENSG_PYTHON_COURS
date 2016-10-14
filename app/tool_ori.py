@@ -118,7 +118,58 @@ def extract_center_from_dictori(dict_ori):
     return [dict_ori["easting"], dict_ori["northing"], dict_ori["altitude"], 1]
 
 
-def write_shp_viewdir_from_arrori(arr_oris, export_filename, viewdir_length_proj=1.0):
+def extract_centers_from_arroris(arr_oris):
+    """
+
+    :param arr_oris:
+    :return:
+    """
+    return [extract_center_from_dictori(dict_ori) for dict_ori in arr_oris]
+
+
+def compute_rotationmatrix_from_arroris(arr_oris):
+    """
+
+    :param arr_oris:
+    :return:
+    """
+    return [
+        build_rotationmatrix_from_micmac(*extract_and_convert_rollpitchyaw_from_dictori(ori))
+        for ori in arr_oris
+    ]
+
+
+def compute_affine_transformations_from_arroris(arr_oris):
+    """
+    [
+     (id_image, (rotation_matrix4x4, position)),
+     ...
+    ]
+
+    :param arr_oris:
+    :return:
+    """
+    return zip(
+        [ori['id'] for ori in arr_oris],
+        zip(
+            compute_rotationmatrix_from_arroris(arr_oris),
+            extract_centers_from_arroris(arr_oris)
+        )
+    )
+
+
+def write_affine_transformation_from_arrori(export_filename, arr_oris):
+    """
+    :param export_filename:
+    :param arr_oris:
+    :return:
+    """
+    with open(export_filename, 'w') as fo_matrix4x4_oris:
+        fo_matrix4x4_oris.write(str(compute_affine_transformations_from_arroris(arr_oris)))
+        logger.info("Export file: %s", export_filename)
+
+
+def write_shp_viewdir_from_arrori(export_filename, arr_oris, viewdir_length_proj=1.0):
     """
 
     :param arr_oris:
@@ -139,7 +190,7 @@ def write_shp_viewdir_from_arrori(arr_oris, export_filename, viewdir_length_proj
 
     # This time write each line separately
     # with its own dbf record
-    for _, ori in enumerate(arr_oris):
+    for ori in arr_oris:
         # on extrait le centre de la prise de vue
         center = extract_center_from_dictori(ori)
         # on extrait les informations d'orientation
