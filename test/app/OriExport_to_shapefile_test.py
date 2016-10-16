@@ -1,12 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # url: http://stackoverflow.com/questions/36318440/python-nosetests-import-file-path-with-multiple-modules-files
 try:
     from app.OriExport_to_shapefile import write_shp_viewdir_from_arrori
-    from app.OriExport_to_shapefile import write_shp_idpositions_from_arrori, extract_center_from_dictori
+    from app.OriExport_to_shapefile import write_shp_idpositions_from_arrori
+    from app.tool_ori import extract_centers_from_arroris, extract_center_from_dictori
 except:
     import sys
     sys.path.append("../app")
     from OriExport_to_shapefile import write_shp_viewdir_from_arrori
     from OriExport_to_shapefile import write_shp_idpositions_from_arrori, extract_center_from_dictori
+    from tool_ori import extract_centers_from_arroris, extract_center_from_dictori
 #
 import unittest
 from os.path import exists
@@ -102,13 +107,12 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
                 'pitch': -90.0,
                 'yaw': 0.0,
                 'roll': 0.0
-            }]
+            }
+        ]
 
-        write_shp_viewdir_from_arrori(arr_oris,
-                                      self.test_shapefile,
-                                      viewdir_length_proj=10.0)
+        write_shp_viewdir_from_arrori(self.test_shapefile, arr_oris, viewdir_length_proj=10.0)
 
-        # on tests si la methode a exporte les fichiers
+        # on tests si la methode a exporté les fichiers
         self.assertTrue(exists(self.test_shapefile))
 
         # lecture d'un shapefile

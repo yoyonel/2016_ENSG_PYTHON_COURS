@@ -107,6 +107,7 @@ def extract_center_from_dictori(dict_ori):
     """
 
     :param dict_ori:
+    :type dict_ori: dict
     :return:
 
     >>> dict_ori = {'id': 'IMG_1468832894.185000000.jpg', \
