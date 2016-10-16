@@ -3,7 +3,7 @@
 import argparse
 #
 from tool_log import logger, init_logger
-from tool_ori import export_oriexportfileobject_to_oriarray, \
+from tool_ori import dump_ori_fileobject_to_array, \
     export_meanposition_from_arrori,    \
     write_affine_transformation_from_arrori,        \
     write_shp_idpositions_from_arrori,  \
@@ -120,7 +120,7 @@ def main():
     # url: http://stackoverflow.com/questions/713794/catching-an-exception-while-using-a-python-with-statement
     try:
         with open(args.ori, 'r') as fo_exportori:
-            arr_oris = export_oriexportfileobject_to_oriarray(fo_exportori, args.pivot[0], args.pivot[1], args.pivot[2])
+            arr_oris = dump_ori_fileobject_to_array(fo_exportori, args.pivot[0], args.pivot[1], args.pivot[2])
             if arr_oris:
                 if args.mean_position:
                     export_meanposition_from_arrori(args.mean_position_export, arr_oris)

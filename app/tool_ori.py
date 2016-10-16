@@ -58,7 +58,7 @@ def _convert_line_to_tab_from_orifile(line):
     return line.split()
 
 
-def export_oriexportfileobject_to_oriarray(fo_oriexport, x0=0, y0=0, z0=0):
+def dump_ori_fileobject_to_array(fo_oriexport, x0=0, y0=0, z0=0):
     """
 
     :param fo_oriexport:
@@ -70,7 +70,7 @@ def export_oriexportfileobject_to_oriarray(fo_oriexport, x0=0, y0=0, z0=0):
     url: https://docs.python.org/2/library/stringio.html
     >>> output = StringIO.StringIO('''IMG_1468832894.185000000.jpg -75.622522 -40.654833 -172.350586 \
                                     657739.197431 6860690.284637 53.534337''')
-    >>> export_oriexportfileobject_to_oriarray(output)
+    >>> dump_ori_fileobject_to_array(output)
     [{'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}]
     >>> output.close()
     """
