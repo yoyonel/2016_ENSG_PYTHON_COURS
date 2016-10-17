@@ -1,1 +1,3 @@
-python -m doctest -v app/OriExport_to_shapefile.py
+#!/bin/bash
+
+python -m doctest -v app/OriExport_to_shapefile.py $@
