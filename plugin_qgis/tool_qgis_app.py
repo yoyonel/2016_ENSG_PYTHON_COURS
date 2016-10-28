@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from qgis.core import QgsApplication
+#
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
-from PyQt4.QtGui import QApplication, QWidget, QColor
+from PyQt4.QtGui import QWidget, QColor
 from PyQt4.QtCore import QTimer
 #
 from tool_log import logger
@@ -33,18 +35,20 @@ class QgisApp(QWidget):
         """
         #
         # create a new application instance
-        self.qt_app = QApplication(sys.argv, True)
-
+        self.qgis_app = QgsApplication(sys.argv, True)
         QWidget.__init__(self)
+
+        # Init QGIS for QGIS Application
+        self.qgis_app.initQgis()
 
         # MapCanvas
         self.qgis_canvas = QgsMapCanvas()
-        self.qgis_canvas.enableAntiAliasing(True)
-        #
+        # set color and antialiasing
         self._init_mapcanvas()
         #
         # Timer pour l'animation
         self._timer = QTimer(self)
+        # #
         # self._timer.timeout.connect(self.changeId_random)
         self._timer.timeout.connect(self.changeId_inc)
         #
@@ -94,14 +98,16 @@ class QgisApp(QWidget):
         next_id_in_list = (l_keys.index(self.id_img) + 1) % len(l_keys)
         self.changeId(l_keys[next_id_in_list])
 
-    def _init_mapcanvas(self):
+    def _init_mapcanvas(self, color=QColor("white"), useAA=True):
         """
 
+        :param color:
+        :param useAA:
         :return:
         """
         # create a map canvas widget
-        self.qgis_canvas.setCanvasColor(QColor('white'))
-        self.qgis_canvas.enableAntiAliasing(True)
+        self.qgis_canvas.setCanvasColor(color)
+        self.qgis_canvas.enableAntiAliasing(useAA)
 
     def load_vectorlayer(self, _shp_fullpath=""):
         """
@@ -132,12 +138,15 @@ class QgisApp(QWidget):
         qt_canvas.setWindowTitle('Render MapCanvas')
         qt_canvas.resize(800, 600)
 
-    def show(self):
+    def show(self, show_qgis_canvas=True, show_label=True):
         """
 
         :return:
         """
-        self.qgis_canvas.show()
+        if show_qgis_canvas:
+            self.qgis_canvas.show()
+        if show_label:
+            self.label.show()
 
     def run(self, args):
         """
@@ -172,8 +181,7 @@ class QgisApp(QWidget):
                 configure_layer_renderer(dict_imgs, self.id_img, 'id', self.map_id_color)
                 #
                 self.show()
-                self.label.show()
                 #
                 self.startAnimation(100)
                 #
-                sys.exit(self.qt_app.exec_())
+                sys.exit(self.qgis_app.exec_())
