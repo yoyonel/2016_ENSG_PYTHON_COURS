@@ -5,7 +5,7 @@ from qgis.core import QgsApplication
 #
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
-from PyQt4.QtGui import QApplication, QWidget, QColor
+from PyQt4.QtGui import QWidget, QColor
 from PyQt4.QtCore import QTimer
 #
 from tool_log import logger

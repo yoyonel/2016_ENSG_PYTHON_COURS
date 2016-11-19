@@ -7,11 +7,12 @@ Created on Tue Oct 18 11:23:45 2016
 
 import sys
 #
-from PyQt4.QtGui import QApplication, QWidget, QColor
-from PyQt4.QtCore import QTimer
-#
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer, QgsApplication
 from qgis.gui import QgsMapCanvas, QgsMapCanvasLayer
+#
+from PyQt4.QtGui import QWidget, QColor
+# from PyQt4.QtGui import QApplication
+# from PyQt4.QtCore import QTimer
 
 
 class QgisApp(QWidget):
