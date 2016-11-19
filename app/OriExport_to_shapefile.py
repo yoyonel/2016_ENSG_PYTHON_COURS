@@ -7,7 +7,8 @@ from tool_ori import dump_ori_fileobject_to_array, \
     export_meanposition_from_arrori,    \
     write_affine_transformation_from_arrori,        \
     write_shp_idpositions_from_arrori,  \
-    write_shp_viewdir_from_arrori
+    write_shp_viewdir_from_arrori,  \
+    write_dict_oris
 
 
 # urls:
@@ -76,14 +77,26 @@ def parse_arguments():
                                     (default: nom du fichier transmis par le parametre ori (sans extension)\
                                      avec suffixe '_affinetransfo.txt')""")
 
+    #
+    parser.add_argument("--dict_ori", action='store_true',
+                        help="flag pour exporter un dictionnaire d'ORIS. (default: %(default)s)")
+    parser.add_argument("--dict_ori_export", nargs='?', type=str,
+                        help="""nom du fichier (sans extension) pour l'export du dictionnaire des ORIs\
+                                (default: nom du fichier transmis par le parametre ori (sans extension)\
+                                 avec suffixe '_dict.txt')""")
+
     args = parser.parse_args()
 
+    name_ori = args.ori[:-4]
+
     if args.shapefile is None:
-        args.shapefile = args.ori[:-4]
+        args.shapefile = name_ori
     if args.mean_position_export is None:
-        args.mean_position_export = args.ori[:-4] + '_meanposition.txt'
+        args.mean_position_export = name_ori + '_meanposition.txt'
     if args.affine_transformation_export is None:
-        args.affine_transformation_export = args.ori[:-4] + '_affinetransfo.txt'
+        args.affine_transformation_export = name_ori + '_affinetransfo.txt'
+    if args.dict_ori_export is None:
+        args.dict_ori_export = name_ori + '_dict.txt'
 
     return args
 
@@ -99,11 +112,17 @@ def print_args(args):
     logger.info("- pivot: %s", args.pivot)
     logger.info("- shapefile: %s", args.shapefile)
     logger.info("- export view dir: %s", args.viewdir)
-    logger.info("- export view dir - length proj: %s", args.viewdir_length_proj)
+    if args.viewdir:
+        logger.info("-- export view dir - length proj: %s", args.viewdir_length_proj)
     logger.info("- export mean position: %s", args.mean_position)
-    logger.info("- export mean position export: %s", args.mean_position_export)
+    if args.mean_position:
+        logger.info("-- export mean position export: %s", args.mean_position_export)
     logger.info("- export affine transformation: %s", args.affine_transformation)
-    logger.info("- export affine transformation filename: %s", args.affine_transformation_export)
+    if args.affine_transformation:
+        logger.info("-- export affine transformation filename: %s", args.affine_transformation_export)
+    logger.info("- export dictionnaire ORIs: %s", args.dict_ori)
+    if args.dict_ori:
+        logger.info("-- export dictionnaire ORIs filename: %s", args.dict_ori_export)
 
 
 def main():
@@ -134,6 +153,9 @@ def main():
                         arr_oris,
                         args.viewdir_length_proj
                     )
+                #
+                if args.dict_ori:
+                    write_dict_oris(args.dict_ori_export, arr_oris)
     except IOError as err:
         logger.error('Exception: %s', err)
 

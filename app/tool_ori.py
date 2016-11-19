@@ -14,6 +14,8 @@ import numpy as np
 from math import degrees, radians, atan2
 #
 from tool_micmac import build_rotationmatrix_from_micmac
+#
+import operator
 
 
 def _parse_tabline_from_orifile(tab, x0=0, y0=0, z0=0):
@@ -28,6 +30,9 @@ def _parse_tabline_from_orifile(tab, x0=0, y0=0, z0=0):
     >>> _parse_tabline_from_orifile(['IMG_1468832894.185000000.jpg', '-75.622522', '-40.654833', '-172.350586', \
                                     '657739.197431', '6860690.284637', '53.534337'])
     {'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}
+    >>> _parse_tabline_from_orifile(['IMG_1468832896.588000000.jpg', '-90.305703', '-34.277029', '170.798629', \
+                                    '657738.965946', '6860690.252280', '53.504801'])
+    {'yaw': 170.798629, 'altitude': 53.504801, 'roll': -90.305703, 'easting': 657738.965946, 'pitch': -34.277029, 'id': 'IMG_1468832896.588000000.jpg', 'northing': 6860690.25228}
     """
     md = dict()
 
@@ -54,6 +59,9 @@ def _convert_line_to_tab_from_orifile(line):
     >>> _convert_line_to_tab_from_orifile('''IMG_1468832894.185000000.jpg -75.622522 -40.654833 -172.350586 \
                                             657739.197431 6860690.284637 53.534337''')
     ['IMG_1468832894.185000000.jpg', '-75.622522', '-40.654833', '-172.350586', '657739.197431', '6860690.284637', '53.534337']
+    >>> _convert_line_to_tab_from_orifile('''IMG_1468832896.588000000.jpg -90.305703 -34.277029 170.798629 \
+                                            657738.965946 6860690.252280 53.504801''')
+    ['IMG_1468832896.588000000.jpg', '-90.305703', '-34.277029', '170.798629', '657738.965946', '6860690.252280', '53.504801']
     """
     return line.split()
 
@@ -75,9 +83,10 @@ def dump_ori_fileobject_to_array(fo_oriexport, x0=0, y0=0, z0=0):
     >>> output.close()
     """
     try:
-        return [_parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0)
-                for line in fo_oriexport
-                ]
+        return [
+            _parse_tabline_from_orifile(_convert_line_to_tab_from_orifile(line), x0, y0, z0)
+            for line in fo_oriexport
+            ]
     except Exception as err:
         logger.error("Exception: " % err)
         return []
@@ -103,17 +112,32 @@ def extract_and_convert_rollpitchyaw_from_dictori(dict_ori):
     return roll, pitch, yaw
 
 
-def extract_center_from_dictori(dict_ori):
+def extract_center_from_dict_img_ori(dict_img_ori):
     """
 
     :param dict_ori:
     :type dict_ori: dict
     :return:
 
-    >>> dict_ori = {'id': 'IMG_1468832894.185000000.jpg', \
+    >>> dict_img_ori = {'id': 'IMG_1468832894.185000000.jpg', \
                     'altitude': 53.534337, 'easting': 657739.197431, 'northing': 6860690.284637, \
                     'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833}
-    >>> extract_center_from_dictori(dict_ori)
+    >>> extract_center_from_dict_img_ori(dict_img_ori)
+    [657739.197431, 6860690.284637, 53.534337, 1]
+    """
+    return [dict_img_ori["easting"], dict_img_ori["northing"], dict_img_ori["altitude"], 1]
+
+
+def extract_center_from_dict_ori(dict_ori):
+    """
+
+    :param dict_ori:
+    :type dict_ori: dict
+    :return:
+
+    >>> dict_ori = {'altitude': 53.534337, 'easting': 657739.197431, \
+                    'northing': 6860690.284637, 'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833}
+    >>> extract_center_from_dict_img_ori(dict_ori)
     [657739.197431, 6860690.284637, 53.534337, 1]
     """
     return [dict_ori["easting"], dict_ori["northing"], dict_ori["altitude"], 1]
@@ -125,7 +149,27 @@ def extract_centers_from_arroris(arr_oris):
     :param arr_oris:
     :return:
     """
-    return [extract_center_from_dictori(dict_ori) for dict_ori in arr_oris]
+    return [extract_center_from_dict_img_ori(dict_ori) for dict_ori in arr_oris]
+
+
+def update_center_to_dictori(dict_ori, center):
+    """
+
+    :param dict_ori:
+    :param center:
+    :return:
+
+
+    >>> dict_ori = {'id': 'IMG_1468832894.185000000.jpg', \
+                    'altitude': 53.534337, 'easting': 657739.197431, 'northing': 6860690.284637, \
+                    'pitch': -172.350586, 'yaw': -75.622522, 'roll': -40.654833}
+    >>> update_center_to_dictori(dict_ori, [0, 0, 0, 1])
+    {'roll': -40.654833, 'yaw': -75.622522, 'id': 'IMG_1468832894.185000000.jpg', 'easting': 0, 'pitch': -172.350586, 'altitude': 0, 'northing': 0}
+    """
+    dict_ori["easting"] = center[0]
+    dict_ori["northing"] = center[1]
+    dict_ori["altitude"] = center[2]
+    return dict_ori
 
 
 def compute_rotationmatrix_from_arroris(arr_oris):
@@ -193,7 +237,7 @@ def write_shp_viewdir_from_arrori(export_filename, arr_oris, viewdir_length_proj
     # with its own dbf record
     for ori in arr_oris:
         # on extrait le centre de la prise de vue
-        center = extract_center_from_dictori(ori)
+        center = extract_center_from_dict_img_ori(ori)
         # on extrait les informations d'orientation
         roll, pitch, yaw = extract_and_convert_rollpitchyaw_from_dictori(ori)
         # on calcule la matrix de rotation a partir de ces informations d'orientation
@@ -227,7 +271,7 @@ def write_shp_idpositions_from_arrori(
     :param arr_oris:
     :param export_filename:
     :param field_0_name: len(field_0_name) < 11
-    :type field_1_name: len(field_1_name) < 11
+    :param field_1_name: len(field_1_name) < 11
     :return:
     """
     #
@@ -273,3 +317,165 @@ def export_meanposition_from_arrori(mean_position_export, arr_oris):
         logger.error('Exception: %s', err)
     # on retourne la mean position
     return mean_position
+
+
+def construct_dict_oris_from_arrori(arr_dict_oris):
+    """
+
+    :param arr_oris:
+    :return:
+
+    >>> construct_dict_oris_from_arrori([ \
+    {'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, \
+    'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}, \
+    {'yaw': 170.798629, 'altitude': 53.504801, 'roll': -90.305703, \
+    'easting': 657738.965946, 'pitch': -34.277029, 'id': 'IMG_1468832896.588000000.jpg', 'northing': 6860690.25228}, \
+    ])
+    {'IMG_1468832896.588000000.jpg': {'yaw': 170.798629, 'roll': -90.305703, 'easting': 657738.965946, 'pitch': -34.277029, 'altitude': 53.504801, 'northing': 6860690.25228}, 'IMG_1468832894.185000000.jpg': {'yaw': -172.350586, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'altitude': 53.534337, 'northing': 6860690.284637}}
+    """
+    #
+    d = {}
+    for d_ori in arr_dict_oris:
+        d[d_ori['id']] = {k: v for k, v in d_ori.items() if not k == 'id'}
+    return d
+
+
+def construct_dict_oris_from_arrori_v2(arr_dict_oris):
+    """
+
+    :param arr_oris:
+    :return:
+
+    >>> construct_dict_oris_from_arrori_v2([ \
+    {'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, \
+    'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}, \
+    {'yaw': 170.798629, 'altitude': 53.504801, 'roll': -90.305703, \
+    'easting': 657738.965946, 'pitch': -34.277029, 'id': 'IMG_1468832896.588000000.jpg', 'northing': 6860690.25228}, \
+    ])
+    {'IMG_1468832896.588000000.jpg': {'yaw': 170.798629, 'roll': -90.305703, 'easting': 657738.965946, 'pitch': -34.277029, 'altitude': 53.504801, 'northing': 6860690.25228}, 'IMG_1468832894.185000000.jpg': {'yaw': -172.350586, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'altitude': 53.534337, 'northing': 6860690.284637}}
+    """
+    # version: 'dict_comphreension'
+    dict_oris = {}
+    map(
+        lambda dict_ori: dict_oris.__setitem__(
+            dict_ori['id'],
+            dict(filter(lambda (k, v): k is not 'id', dict_ori.items()))    # url: http://stackoverflow.com/a/2844536
+        ),
+        arr_dict_oris
+    )
+    return dict_oris
+
+
+def construct_dict_oris_from_arrori_v3(arr_dict_oris):
+    """
+
+    :param arr_oris:
+    :return:
+
+    >>> construct_dict_oris_from_arrori_v3([ \
+    {'yaw': -172.350586, 'altitude': 53.534337, 'roll': -75.622522, \
+    'easting': 657739.197431, 'pitch': -40.654833, 'id': 'IMG_1468832894.185000000.jpg', 'northing': 6860690.284637}, \
+    {'yaw': 170.798629, 'altitude': 53.504801, 'roll': -90.305703, \
+    'easting': 657738.965946, 'pitch': -34.277029, 'id': 'IMG_1468832896.588000000.jpg', 'northing': 6860690.25228}, \
+    ])
+    {'IMG_1468832896.588000000.jpg': {'yaw': 170.798629, 'roll': -90.305703, 'easting': 657738.965946, 'pitch': -34.277029, 'altitude': 53.504801, 'northing': 6860690.25228}, 'IMG_1468832894.185000000.jpg': {'yaw': -172.350586, 'roll': -75.622522, 'easting': 657739.197431, 'pitch': -40.654833, 'altitude': 53.534337, 'northing': 6860690.284637}}
+    """
+    # version: 'dict_comphreension'
+    dict_oris = {}
+    # url: http://stackoverflow.com/a/23181898
+    [
+        operator.setitem(dict_oris, dict_ori['id'], dict(filter(lambda (k, v): k is not 'id', dict_ori.items())))
+        for dict_ori in arr_dict_oris
+    ]
+    return dict_oris
+
+
+def write_dict_oris(dict_ori_export, arr_oris):
+    """
+
+    :param dict_ori_export:
+    :param arr_oris:
+    :return:
+
+    """
+    dict_oris = construct_dict_oris_from_arrori(arr_oris)
+    try:
+        with open(dict_ori_export, 'w') as fo_exportdictori:
+            fo_exportdictori.write(str(dict_oris))  # stringification du dictionnaire ORIs
+        logger.info("Export file: %s", dict_ori_export)
+    except IOError as err:
+        logger.error('Exception: %s', err)
+    # on retourne la mean position
+    return dict_oris
+
+
+def apply_pivot(dict_oris, id_img_for_pivot):
+    """
+    Met a jour les positions des centres optiques du dictionnaire d'ORIs en prenant comme pivot la position du centre
+    optique de l'image id_img_for_pivot.
+
+    :param dict_oris: dictionnaire d'ORIs
+    :type dict_oris: dict
+    :param id_img_for_pivot: id de l'image servant de pivot de translation a appliquer
+    :type id_img_for_pivot: str
+    :return:
+
+    :raise:
+        :KeyError:  id_img_for_pivot is not a key of dict_oris
+
+
+    :Examples:
+    >>> dict_oris = {'IMG_1468832896.588000000.jpg': {'yaw': 170.798629, 'roll': -90.305703, 'easting': 657738.965946, \
+                    'pitch': -34.277029, 'altitude': 53.504801, 'northing': 6860690.25228}, \
+                    'IMG_1468832894.185000000.jpg': {'yaw': -172.350586, 'roll': -75.622522, 'easting': 657739.197431, \
+                    'pitch': -40.654833, 'altitude': 53.534337, 'northing': 6860690.284637} \
+                    }
+    >>> apply_pivot(dict_oris, 'IMG_1468832896.588000000.jpg')
+    >>> dict_oris['IMG_1468832896.588000000.jpg']['easting'] == dict_oris['IMG_1468832896.588000000.jpg']['northing'] \
+     == dict_oris['IMG_1468832896.588000000.jpg']['altitude'] == 0.0
+    True
+    >>> dict_oris['IMG_1468832894.185000000.jpg']['easting'] == 657739.197431 - 657738.965946
+    True
+    >>> dict_oris['IMG_1468832894.185000000.jpg']['northing'] == 6860690.284637 - 6860690.25228
+    True
+    >>> dict_oris['IMG_1468832894.185000000.jpg']['altitude'] == 53.534337 - 53.504801
+    True
+    """
+    try:
+        dict_ori_pivot = dict_oris[id_img_for_pivot]
+        position_pivot = extract_center_from_dict_img_ori(dict_ori_pivot)
+        # update dict
+        map(
+            lambda (id_img, dict_ori): (id_img, apply_pivot_on_dic_ori(dict_ori, position_pivot)),
+            dict_oris.iteritems()
+        )
+    except KeyError:
+        print("L'id image '{}' n'est pas présent dans dict_oris!".format(id_img_for_pivot))
+        raise KeyError
+
+
+def apply_pivot_on_position(position, pivot):
+    """
+
+    :param position:
+    :param pivot:
+    :return:
+
+    >>> apply_pivot_on_position([657739.197431, 6860690.284637, 53.534337, 1], \
+                                [657739.197431, 6860690.284637, 53.534337, 1])
+    [0.0, 0.0, 0.0, 1]
+    """
+    return map(sum, zip(position[:3], [-coord for coord in pivot][:3])) + [1]
+
+
+def apply_pivot_on_dic_ori(dict_ori, pivot):
+    """
+
+    :param dict_ori:
+    :param pivot:
+    :return:
+    """
+    return update_center_to_dictori(
+        dict_ori,
+        apply_pivot_on_position(extract_center_from_dict_img_ori(dict_ori), pivot)
+    )
