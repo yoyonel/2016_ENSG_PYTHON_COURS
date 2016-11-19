@@ -5,7 +5,7 @@
 try:
     from app.OriExport_to_shapefile import write_shp_viewdir_from_arrori
     from app.OriExport_to_shapefile import write_shp_idpositions_from_arrori
-    from app.tool_ori import extract_centers_from_arroris, extract_center_from_dictori
+    from app.tool_ori import extract_centers_from_arroris, extract_center_from_dict_img_ori
 except:
     import sys
     sys.path.append("../app")
@@ -49,7 +49,7 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         """
         Helper pour les tests
         ---------------------
-        Utilise Numpy pour determiner si deux entites (numpy) sont proches.
+        Utilise Numpy our determiner si deux entites (numpy) sont proches.
         Leve une exception si ce n'est pas le cas.
         :param np0:
         :param np1:
@@ -87,7 +87,7 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
         # type == 1 => Shape type=Point
         self.assertEqual(shapes[0].shapeType, 1)
         # on utilise extract_center_dict_ori (qui est doctestee)
-        self._raise_assert_on_np_is_close_all(list_points[0], extract_center_from_dictori(arr_oris[0])[:2])
+        self._raise_assert_on_np_is_close_all(list_points[0], extract_center_from_dict_img_ori(arr_oris[0])[:2])
 
     def test_write_viewdir_shp_from_arr_ori(self):
         """
@@ -129,10 +129,10 @@ class Test_OriExport_to_shapefile(unittest.TestCase):
 
         # On tests les points contenus dans le shapefile
         # point 1: centre de l'ori
-        point1_expected = extract_center_from_dictori(arr_oris[0])[:2]
+        point1_expected = extract_center_from_dict_img_ori(arr_oris[0])[:2]
         self._raise_assert_on_np_is_close_all(list_points[0], point1_expected)
         # point 2: centre de l'ori + projection (longueur=10) dans la direction de vue
-        point2_expected = np.add(extract_center_from_dictori(arr_oris[0])[:2], [10.0, 0.0])
+        point2_expected = np.add(extract_center_from_dict_img_ori(arr_oris[0])[:2], [10.0, 0.0])
         self._raise_assert_on_np_is_close_all(list_points[1], point2_expected)
 
 
